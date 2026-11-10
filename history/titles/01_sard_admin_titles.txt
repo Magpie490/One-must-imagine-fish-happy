@@ -1,0 +1,14 @@
+﻿# 867
+
+d_nf_torchitoriu = { # Agelastos (Achaia)
+	865.1.1 = {
+		liege = e_byzantium
+		holder = 235092 # Chrysaphios
+		government = administrative_government
+		succession_laws = { noble_family_succession_law }
+	}
+	868.1.1 = {
+		holder = 0
+	}
+}
+

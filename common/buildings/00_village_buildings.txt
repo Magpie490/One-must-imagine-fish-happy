@@ -1,0 +1,201 @@
+﻿@holding_illustration_arid = "gfx/interface/illustrations/holding_types/tribe_arid.dds"
+@holding_illustration_grass = "gfx/interface/illustrations/holding_types/tribe_grass.dds"
+@holding_illustration_seasia = "gfx/interface/illustrations/holding_types/tgp_temple_pagan_se_asia.dds"
+
+# Tribal Hold
+village_01 = {
+	construction_time = slow_construction_time
+
+	assets = {
+		### GENERIC ### 
+		asset = {
+			type = pdxmesh
+			names = {
+				"building_western_village_01_a_mesh"
+			}
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+		asset = {
+			type = pdxmesh
+			names = {
+				"building_african_village_01_a_mesh"
+			}
+			graphical_cultures = { african_building_gfx }
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+		asset = {
+			type = pdxmesh
+			names = {
+				"building_mena_village_01_a_mesh"
+			}
+			graphical_cultures = { arabic_group_building_gfx berber_group_building_gfx mena_building_gfx }
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+		asset = {
+			type = pdxmesh
+			names = {
+				"building_steppe_village_01_a_mesh"
+			}
+			graphical_cultures = { steppe_building_gfx }
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+		asset = {
+			type = pdxmesh
+			names = {
+				"building_india_village_01_a_mesh"
+			}
+			graphical_cultures = { indian_building_gfx tibetan_building_gfx }
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+		# Western Generic
+		asset = {
+			type = pdxmesh
+			names = {
+				building_western_village_01_a_mesh
+			}
+			graphical_cultures = { western_building_gfx }
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+	}
+
+	is_enabled = {
+		building_requirement_tribal = no
+		NOT = {
+			has_building_or_higher = village_01
+		}
+	}
+	can_construct_potential = {
+		barony_cannot_construct_holding = no
+	}
+
+
+	can_construct_showing_failures_only = {
+		building_requirement_tribal = no
+		building_requirement_tribal_holding_in_county = yes
+		building_requirement_nomad = no
+		building_requirement_nomad_holding_in_county = yes
+		building_requirement_herder = no
+		building_requirement_herder_holding_in_county = yes
+	}
+	
+	cost_gold = normal_building_tier_1_cost
+	next_building = village_02
+	
+	levy = normal_building_levy_tier_2
+	max_garrison = good_building_max_garrison_tier_1
+	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_1
+	province_modifier = {
+		monthly_income = good_building_tax_tier_2
+		travel_danger = -10
+	}
+	
+	flag = village
+
+	type_icon = "icon_building_hill_farms.dds"
+
+	ai_value = {
+		base = 1
+		ai_tier_1_building_modifier = yes
+	}
+}
+
+village_02 = {
+	construction_time = slow_construction_time
+
+	assets = {
+		### GENERIC ### 
+		asset = {
+			type = pdxmesh
+			names = {
+				"building_western_village_01_a_mesh"
+			}
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+		asset = {
+			type = pdxmesh
+			names = {
+				"building_african_village_01_a_mesh"
+			}
+			graphical_cultures = { african_building_gfx }
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+		asset = {
+			type = pdxmesh
+			names = {
+				"building_mena_village_01_a_mesh"
+			}
+			graphical_cultures = { arabic_group_building_gfx berber_group_building_gfx mena_building_gfx }
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+		asset = {
+			type = pdxmesh
+			names = {
+				"building_steppe_village_01_a_mesh"
+			}
+			graphical_cultures = { steppe_building_gfx }
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+		asset = {
+			type = pdxmesh
+			names = {
+				"building_india_village_01_a_mesh"
+			}
+			graphical_cultures = { indian_building_gfx tibetan_building_gfx }
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+		# Western Generic
+		asset = {
+			type = pdxmesh
+			names = {
+				building_western_village_01_a_mesh
+			}
+			graphical_cultures = { western_building_gfx }
+			illustration = @holding_illustration_grass
+			soundeffect = { soundeffect = "event:/SFX/Ambience/3DMapEmitters/Holdings/City/tribal_city" soundparameter = { "Tier" = 0 } }
+		}
+	}
+
+	is_enabled = {
+		building_requirement_tribal = no
+	}
+	can_construct_potential = {
+		barony_cannot_construct_holding = no
+	}
+
+
+	can_construct_showing_failures_only = {
+		building_requirement_tribal = no
+		building_requirement_tribal_holding_in_county = yes
+		building_requirement_nomad = no
+		building_requirement_nomad_holding_in_county = yes
+		building_requirement_herder = no
+		building_requirement_herder_holding_in_county = yes
+	}
+	
+	cost_gold = normal_building_tier_2_cost
+	
+	levy = normal_building_levy_tier_3
+	max_garrison = good_building_max_garrison_tier_2
+	garrison_reinforcement_factor = building_garrison_reinforcement_factor_tier_2
+	province_modifier = {
+		monthly_income = good_building_tax_tier_3
+		travel_danger = -10
+	}
+
+	flag = village
+
+	ai_value = {
+		base = 1
+	}
+}

@@ -1,0 +1,4381 @@
+﻿# Standard Values
+@pos_compat_high = 30
+@pos_compat_medium = 15
+@pos_compat_low = 5
+
+@neg_compat_high = -30
+@neg_compat_medium = -15
+@neg_compat_low = -5
+
+# LEARNING OUTCOMES
+
+
+
+gluttonous = {
+	category = personality
+	opposites = {
+		temperate
+	}
+
+	stewardship = -2
+	stress_loss_mult = 0.1
+
+	attraction_opinion = -5
+	same_opinion = 10
+	opposite_opinion = -10
+
+	ruler_designer_cost = 20
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.05
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gluttonous_desc
+			}
+			desc = trait_gluttonous_character_desc
+		}
+	}
+
+	ai_greed = medium_positive_ai_value
+	ai_energy = very_low_negative_ai_value
+	ai_amenity_target_baseline = 0.2
+
+	compatibility = {
+		gluttonous = @pos_compat_medium
+		drunkard = @pos_compat_low
+		greedy = @pos_compat_low
+		ambitious = @pos_compat_low
+		lifestyle_reveler = @pos_compat_medium
+		temperate = @neg_compat_medium
+	}
+}
+temperate = {
+	category = personality
+	opposites = {
+		gluttonous
+	}
+	stewardship = 2
+	health = 0.25
+
+	courtly_opinion = -10
+
+	same_opinion = 10
+	opposite_opinion = -10
+
+	ruler_designer_cost = 40
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.05
+	}
+	culture_modifier = {
+		parameter = introverted_trait_bonuses
+		same_culture_opinion = 10
+		monthly_piety_gain_mult = 0.1
+	}
+
+	culture_modifier = {
+		parameter = temperate_trait_bonuses
+		same_culture_opinion = 10
+		monthly_piety = 0.5
+	}
+
+	culture_modifier = {
+		parameter = stress_loss_bonus_from_harmonious_traits
+		stress_loss_mult = 0.15
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_temperate_desc
+			}
+			desc = trait_temperate_character_desc
+		}
+	}
+
+	ai_greed = medium_negative_ai_value
+	ai_energy = very_low_positive_ai_value
+	ai_vengefulness = very_low_negative_ai_value
+
+	compatibility = {
+		temperate = @pos_compat_medium
+		calm = @pos_compat_low
+		content = @pos_compat_low
+		chaste = @pos_compat_low
+		gluttonous = @neg_compat_medium
+		drunkard = @neg_compat_low
+		greedy = @neg_compat_low
+		lustful = @neg_compat_low
+		lifestyle_reveler = @neg_compat_medium
+	}
+}
+greedy = {
+	category = personality
+	opposites = {
+		generous
+	}
+	diplomacy = -2
+
+	monthly_income_mult = 0.05
+	monthly_income_per_stress_level_mult = 0.1
+	courtly_opinion = -15
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+	rite_modifier = {
+		parameter = tenet_philanthropia_greedy_penalty
+		same_faith_opinion = -10
+		monthly_piety_gain_mult = -0.25
+	}
+
+	ai_war_chance = 0.5
+	ai_amenity_spending = -0.25
+	ai_amenity_target_baseline = -0.4
+
+	ruler_designer_cost = 30
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_greedy_desc
+			}
+			desc = trait_greedy_character_desc
+		}
+	}
+
+	ai_honor = very_low_negative_ai_value
+	ai_greed = dominant_positive_ai_value
+	ai_compassion = low_negative_ai_value
+
+	compatibility = {
+		greedy = @pos_compat_low
+		ambitious = @pos_compat_low
+		generous = @neg_compat_high
+		content = @neg_compat_medium
+		compassionate = @neg_compat_medium
+	}
+}
+generous = {
+	category = personality
+	opposites = {
+		greedy
+	}
+
+	diplomacy = 3
+	monthly_income_mult = -0.1
+	courtly_opinion = 15
+
+	rite_modifier = {
+		parameter = tenet_philanthropia_generous_bonus
+		same_faith_opinion = 10
+		development_growth_factor = 0.2
+	}
+
+	opposite_opinion = -15
+
+
+	ruler_designer_cost = 20
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.1
+	}
+	culture_modifier = {
+		parameter = trait_county_opinion_modifiers
+		county_opinion_add = 5
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_generous_desc
+			}
+			desc = trait_generous_character_desc
+		}
+	}
+
+	ai_honor = low_positive_ai_value
+	ai_greed = dominant_negative_ai_value
+	ai_compassion = medium_positive_ai_value
+	ai_sociability = very_low_positive_ai_value
+	ai_amenity_spending = 0.2
+
+	compatibility = {
+		generous = @pos_compat_high
+		compassionate = @pos_compat_medium
+		content = @pos_compat_low
+		forgiving = @pos_compat_low
+		greedy = @neg_compat_high
+		ambitious = @neg_compat_low
+	}
+}
+lazy = {
+	category = personality
+	opposites = {
+		diligent
+	}
+	diplomacy = -1
+	intrigue = -1
+	stewardship = -1
+	martial = -1
+	learning = -1
+
+	character_travel_speed = -10
+
+	stress_loss_mult = 0.5
+
+	ruler_designer_cost = -10
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.35
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_lazy_desc
+			}
+			desc = trait_lazy_character_desc
+		}
+	}
+
+	ai_vengefulness = very_low_negative_ai_value
+	ai_greed = very_low_positive_ai_value
+	ai_energy = high_negative_ai_value
+	ai_boldness = low_negative_ai_value
+	ai_compassion = very_low_negative_ai_value
+	ai_sociability = very_low_negative_ai_value
+
+	compatibility = {
+		lazy = @pos_compat_medium
+		content = @pos_compat_low
+		calm = @pos_compat_low
+		gluttonous = @pos_compat_low
+		diligent = @neg_compat_medium
+		ambitious = @neg_compat_low
+		eccentric = @neg_compat_low
+	}
+}
+diligent = {
+	category = personality
+	opposites = {
+		lazy
+	}
+	diplomacy = 2
+	stewardship = 3
+	learning = 3
+
+	parochial_opinion = 5
+
+	stress_loss_mult = -0.5
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.35
+	}
+	culture_modifier = {
+		parameter = hard_working_traits_more_valued
+		farmlands_tax_mult = 0.2
+		floodplains_tax_mult = 0.2
+	}
+
+	culture_modifier = {
+		parameter = pragmatic_traits_county_opinion_modifiers
+		county_opinion_add = 10
+	}
+
+	culture_modifier = {
+		parameter = honorable_trait_bonuses
+		same_culture_opinion = 10
+		monthly_prestige_gain_mult = 0.05
+	}
+
+	same_opinion = 10
+	opposite_opinion = -10
+
+	flag = can_improve_capital_decision
+
+	culture_modifier = {
+		parameter = trait_county_opinion_modifiers
+		county_opinion_add = 5
+	}
+
+	culture_modifier = {
+		parameter = winter_trait_bonuses
+		winter_movement_speed = 0.1
+	}
+
+	culture_modifier = {
+		parameter = dry_trait_bonuses
+		drylands_min_combat_roll = 2
+		desert_min_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = build_bonuses_on_religious_traits
+		church_holding_build_speed = -0.2
+		church_holding_holding_build_speed = -0.2
+	}
+
+	ruler_designer_cost = 40
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_diligent_desc
+			}
+			desc = trait_diligent_character_desc
+		}
+	}
+
+	ai_vengefulness = very_low_positive_ai_value
+	ai_rationality = low_positive_ai_value
+	ai_energy = very_high_positive_ai_value
+	ai_boldness = medium_positive_ai_value
+	ai_amenity_target_baseline = 0.1
+	ai_amenity_spending = 0.1
+
+	compatibility = {
+		diligent = @pos_compat_medium
+		ambitious = @pos_compat_low
+		patient = @pos_compat_low
+		whole_of_body = @pos_compat_low
+		erudite = @pos_compat_low
+		theologian = @pos_compat_low
+		pensive = @pos_compat_low
+		architect = @pos_compat_low
+		administrator = @pos_compat_low
+		avaricious = @pos_compat_low
+		lazy = @neg_compat_medium
+		content = @neg_compat_low
+	}
+}
+wrathful = {
+	category = personality
+	opposites = {
+		calm
+	}
+	diplomacy = -1
+	martial = 3
+	intrigue = -1
+
+	parochial_opinion = -10
+	glory_hound_opinion = 5
+
+	courtly_opinion = -10
+
+	dread_baseline_add = 20
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+	culture_modifier = {
+		parameter = forest_trait_bonuses
+		forest_max_combat_roll = 2
+		taiga_max_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = jungle_trait_bonuses
+		jungle_max_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = mountain_trait_bonuses
+		mountains_max_combat_roll = 2
+		desert_mountains_max_combat_roll = 2
+	}
+
+	rite_modifier = {
+		parameter = tenet_mountain_worship_trait_bonuses
+		mountains_max_combat_roll = 2
+		desert_mountains_max_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = dry_trait_bonuses
+		drylands_max_combat_roll = 2
+		desert_max_combat_roll = 2
+	}
+
+	ai_war_chance = 0.25
+
+	flag = can_duel_criminals_interaction
+
+	ruler_designer_cost = 30
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_wrathful_desc
+			}
+			desc = trait_wrathful_character_desc
+		}
+	}
+
+	ai_rationality = medium_negative_ai_value
+	ai_energy = very_low_positive_ai_value
+	ai_boldness = medium_positive_ai_value
+	ai_compassion = low_negative_ai_value
+	ai_vengefulness = low_positive_ai_value
+
+	compatibility = {
+		wrathful = @pos_compat_low
+		stubborn = @pos_compat_low
+		honest = @pos_compat_low
+		vengeful = @pos_compat_low
+		calm = @neg_compat_medium
+		patient = @neg_compat_medium
+		forgiving = @neg_compat_low
+		compassionate = @neg_compat_low
+		eccentric = @neg_compat_low
+	}
+}
+calm = {
+	category = personality
+	opposites = {
+		wrathful
+	}
+	diplomacy = 1
+	intrigue = 1
+	enemy_scheme_secrecy_add = -10
+
+	opposite_opinion = -10
+	same_opinion = 10
+
+	stress_loss_mult = 0.1
+	dread_decay_mult = 0.5
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.25
+	}
+	culture_modifier = {
+		parameter = winter_trait_bonuses
+		winter_advantage = 3
+	}
+
+	culture_modifier = {
+		parameter = forest_trait_bonuses
+		forest_min_combat_roll = 1
+		taiga_min_combat_roll = 1
+	}
+
+	culture_modifier = {
+		parameter = jungle_trait_bonuses
+		jungle_min_combat_roll = 1
+	}
+
+	culture_modifier = {
+		parameter = mountain_trait_bonuses
+		mountains_min_combat_roll = 2
+		desert_mountains_min_combat_roll = 2
+	}
+
+	rite_modifier = {
+		parameter = tenet_mountain_worship_trait_bonuses
+		mountains_min_combat_roll = 2
+		desert_mountains_min_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = dry_trait_bonuses
+		drylands_min_combat_roll = 2
+		desert_min_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = stress_loss_bonus_from_harmonious_traits
+		stress_loss_mult = 0.15
+	}
+
+	ai_war_chance = -0.25
+
+	ruler_designer_cost = 25
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_calm_desc
+			}
+			desc = trait_calm_character_desc
+		}
+	}
+
+	ai_rationality = very_high_positive_ai_value
+	ai_energy = very_low_negative_ai_value
+	ai_boldness = low_negative_ai_value
+	ai_vengefulness = very_low_negative_ai_value
+
+	compatibility = {
+		calm = @pos_compat_medium
+		patient = @pos_compat_medium
+		chaste = @pos_compat_low
+		temperate = @pos_compat_low
+		lazy = @pos_compat_low
+		wrathful = @neg_compat_high
+		impatient = @neg_compat_medium
+	}
+}
+patient = {
+	category = personality
+	opposites = {
+		impatient
+	}
+
+	learning = 2
+	enemy_hostile_scheme_phase_duration_add = minor_scheme_phase_duration_malus_value
+	parochial_opinion = 10
+	liege_opinion = 5
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.1
+	}
+	culture_modifier = {
+		parameter = winter_trait_bonuses
+		winter_advantage = 3
+	}
+
+	culture_modifier = {
+		parameter = forest_trait_bonuses
+		forest_min_combat_roll = 2
+		taiga_min_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = jungle_trait_bonuses
+		jungle_min_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = hard_working_traits_more_valued
+		farmlands_tax_mult = 0.2
+		floodplains_tax_mult = 0.2
+	}
+
+	culture_modifier = { #for FP3's "Irrigation Expert" tradition
+		parameter = innovative_traits_more_valued
+		drylands_tax_mult = 0.1
+		desert_tax_mult = 0.1
+		desert_mountains_tax_mult = 0.1
+	}
+
+	culture_modifier = {
+		parameter = stress_loss_bonus_from_harmonious_traits
+		stress_loss_mult = 0.15
+	}
+
+	rite_modifier = {
+		parameter = tenet_hesychasm_patient_bonus
+		monthly_piety_gain_mult = 0.1
+		character_spiritual_fulfillment_gain_mult = 0.1
+	}
+
+	opposite_opinion = -15
+
+	ai_war_cooldown = 0.5
+
+	ruler_designer_cost = 30
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_patient_desc
+			}
+			desc = trait_patient_character_desc
+		}
+	}
+
+	ai_rationality = medium_positive_ai_value
+	ai_energy = very_low_negative_ai_value
+	ai_boldness = low_negative_ai_value
+	ai_vengefulness = very_low_positive_ai_value
+
+	compatibility = {
+		patient = @pos_compat_medium
+		calm = @pos_compat_medium
+		stubborn = @pos_compat_low
+		temperate = @pos_compat_low
+		eccentric = @pos_compat_low
+		impatient = @neg_compat_high
+		wrathful = @neg_compat_low
+		fickle = @neg_compat_low
+	}
+}
+impatient = {
+	category = personality
+	opposites = {
+		patient
+	}
+	learning = -2
+	monthly_prestige_gain_mult = 0.2
+	hostile_scheme_phase_duration_add = minor_scheme_phase_duration_bonus_value
+	character_travel_speed_mult = 0.25
+	character_travel_safety = -10
+
+	courtly_opinion = -10
+	parochial_opinion = -10
+	opinion_of_liege = -5
+	opposite_opinion = -15
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.2
+	}
+	culture_modifier = {
+		parameter = forest_trait_bonuses
+		forest_max_combat_roll = 1
+		taiga_max_combat_roll = 1
+	}
+
+	culture_modifier = {
+		parameter = jungle_trait_bonuses
+		jungle_max_combat_roll = 1
+	}
+
+	rite_modifier = {
+		parameter = tenet_hesychasm_impatient_penalty
+		monthly_piety_gain_mult = -0.1
+	}
+
+	ai_war_cooldown = -0.5
+
+	flag = can_accelerate_schemes_decision
+
+	ruler_designer_cost = 25
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_impatient_desc
+			}
+			desc = trait_impatient_character_desc
+		}
+	}
+
+	ai_rationality = medium_negative_ai_value
+	ai_energy = very_low_positive_ai_value
+	ai_boldness = low_positive_ai_value
+	ai_vengefulness = very_low_negative_ai_value
+	ai_amenity_target_baseline = 0.15
+	ai_amenity_spending = 0.1
+
+	compatibility = {
+		impatient = @pos_compat_low
+		wrathful = @pos_compat_low
+		brave = @pos_compat_low
+		patient = @neg_compat_medium
+		calm = @neg_compat_low
+		temperate = @neg_compat_low
+		eccentric = @neg_compat_high
+	}
+}
+arrogant = {
+	category = personality
+	opposites = {
+		humble
+	}
+
+	monthly_prestige = 1
+
+	owned_scheme_secrecy_add = -10
+
+	opinion_of_liege = -5
+	opinion_of_vassal = -5
+	opposite_opinion = -15
+
+	ruler_designer_cost = 20
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+	culture_modifier = {
+		parameter = mountain_trait_bonuses
+		mountains_advantage = 2
+		desert_mountains_advantage = 2
+	}
+
+	rite_modifier = {
+		parameter = tenet_mountain_worship_trait_bonuses
+		mountains_advantage = 2
+		desert_mountains_advantage = 2
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_arrogant_desc
+			}
+			desc = trait_arrogant_character_desc
+		}
+	}
+
+	ai_honor = low_negative_ai_value
+	ai_greed = low_positive_ai_value
+	ai_rationality = low_negative_ai_value
+	ai_boldness = medium_positive_ai_value
+	ai_energy = very_low_positive_ai_value
+	ai_compassion = low_negative_ai_value
+	ai_sociability = low_positive_ai_value
+	ai_amenity_target_baseline = 1
+
+	compatibility = {
+		arrogant = @pos_compat_low
+		greedy = @pos_compat_medium
+		ambitious = @pos_compat_medium
+		beauty_good_1 = @pos_compat_low
+		beauty_good_2 = @pos_compat_low
+		beauty_good_3 = @pos_compat_low
+		humble = @neg_compat_medium
+		content = @neg_compat_medium
+		generous = @neg_compat_low
+		beauty_bad_1 = @neg_compat_low
+		beauty_bad_2 = @neg_compat_low
+		beauty_bad_3 = @neg_compat_low
+	}
+}
+humble = {
+	category = personality
+	opposites = {
+		arrogant
+	}
+
+	monthly_piety = 0.5
+
+	clergy_opinion = 10
+	zealot_opinion = 10
+	opinion_of_liege = 10
+	opinion_of_vassal = 10
+	opposite_opinion = -15
+
+	ruler_designer_cost = 20
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+	culture_modifier = {
+		parameter = mountain_trait_bonuses
+		mountains_attrition_mult = -0.25
+		desert_mountains_attrition_mult = -0.25
+	}
+
+	rite_modifier = {
+		parameter = tenet_mountain_worship_trait_bonuses
+		mountains_attrition_mult = -0.25
+		desert_mountains_attrition_mult = -0.25
+	}
+
+	culture_modifier = {
+		parameter = dry_trait_bonuses
+		drylands_attrition_mult = -0.2
+		desert_attrition_mult = -0.2
+	}
+
+	culture_modifier = {
+		parameter = build_bonuses_on_religious_traits
+		church_holding_build_gold_cost = -0.15
+		church_holding_holding_build_gold_cost = -0.15
+	}
+
+	culture_modifier = {
+		parameter = introverted_trait_bonuses
+		same_culture_opinion = 10
+		monthly_piety_gain_mult = 0.1
+	}
+
+	culture_modifier = {
+		parameter = honorable_trait_bonuses
+		same_culture_opinion = 10
+		monthly_prestige_gain_mult = 0.05
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_humble_desc
+			}
+			desc = trait_humble_character_desc
+		}
+	}
+
+	ai_honor = low_positive_ai_value
+	ai_greed = high_negative_ai_value
+	ai_energy = very_low_negative_ai_value
+	ai_compassion = low_positive_ai_value
+	ai_amenity_target_baseline = -0.2
+
+	compatibility = {
+		humble = @pos_compat_high
+		content = @pos_compat_low
+		generous = @pos_compat_low
+		compassionate = @pos_compat_low
+		just = @pos_compat_low
+		arrogant = @neg_compat_high
+		greedy = @neg_compat_medium
+		ambitious = @neg_compat_medium
+	}
+}
+craven = {
+	category = personality
+	opposites = {
+		brave
+	}
+	martial = -2
+	prowess = -3
+	intrigue = 2
+
+	attraction_opinion = -10
+	glory_hound_opinion = -15
+	courtly_opinion = -5
+	same_opinion = 20
+
+	owned_scheme_secrecy_add = 10
+	enemy_hostile_scheme_phase_duration_add = minor_scheme_phase_duration_malus_value
+	character_travel_safety_mult = 0.25
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+	culture_modifier = {
+		parameter = craven_and_content_traits_looked_down_upon
+		same_culture_opinion = -15
+	}
+
+	culture_modifier = {
+		parameter = craven_trait_costs_prestige
+		monthly_prestige = -0.5
+	}
+
+	ruler_designer_cost = -10
+
+	flag = lower_chance_of_dying_in_combat
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_craven_desc
+			}
+			desc = trait_craven_character_desc
+		}
+	}
+
+	ai_energy = low_negative_ai_value
+	ai_boldness = dominant_negative_ai_value
+	ai_rationality = very_low_positive_ai_value
+	ai_sociability = low_negative_ai_value
+
+	compatibility = {
+		craven = @pos_compat_low
+		patient = @pos_compat_low
+		calm = @pos_compat_low
+		content = @pos_compat_low
+		brave = @neg_compat_medium
+		wrathful = @neg_compat_high
+		sadistic = @neg_compat_high
+		callous = @neg_compat_medium
+		impatient = @neg_compat_low
+		ambitious = @neg_compat_low
+		deceitful = @neg_compat_low
+	}
+}
+brave = {
+	category = personality
+	opposites = {
+		craven
+	}
+	martial = 2
+	prowess = 3
+
+	attraction_opinion = 10
+	glory_hound_opinion = 10
+	opposite_opinion = -10
+	same_opinion = 10
+
+	culture_modifier = {
+		parameter = trait_county_opinion_modifiers
+		county_opinion_add = 10
+	}
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.35
+	}
+	culture_modifier = {
+		parameter = mountain_trait_bonuses
+		mountains_max_combat_roll = 3
+		desert_mountains_max_combat_roll = 3
+	}
+
+	rite_modifier = {
+		parameter = tenet_mountain_worship_trait_bonuses
+		mountains_max_combat_roll = 3
+		desert_mountains_max_combat_roll = 3
+	}
+
+	culture_modifier = {
+		parameter = winter_trait_bonuses
+		winter_movement_speed = 0.1
+	}
+
+	culture_modifier = {
+		parameter = hill_trait_bonuses
+		hills_advantage = 4
+		hills_attrition_mult = -0.25
+	}
+
+	culture_modifier = {
+		parameter = honorable_trait_bonuses
+		same_culture_opinion = 10
+		monthly_prestige_gain_mult = 0.05
+	}
+
+	ruler_designer_cost = 40
+
+	flag = higher_chance_of_dying_in_battle
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_brave_desc
+			}
+			desc = trait_brave_character_desc
+		}
+	}
+
+	ai_energy = low_positive_ai_value
+	ai_boldness = dominant_positive_ai_value
+	ai_rationality = low_negative_ai_value
+	ai_sociability = low_positive_ai_value
+	ai_amenity_target_baseline = 0.1
+
+	compatibility = {
+		brave = @pos_compat_high
+		ambitious = @pos_compat_medium
+		rowdy = @pos_compat_medium
+		gallant = @pos_compat_low
+		lifestyle_blademaster = @pos_compat_low
+		strategist = @pos_compat_low
+		overseer = @pos_compat_low
+		gallant = @pos_compat_low
+		craven = @neg_compat_high
+		lazy = @neg_compat_medium
+		calm = @neg_compat_low
+		content = @neg_compat_low
+	}
+}
+content = {
+	category = personality
+	opposites = {
+		ambitious
+	}
+	intrigue = -1
+	learning = 2
+
+	opinion_of_liege = 20
+	opinion_of_vassal = 10
+	same_opinion = 20
+	parochial_opinion = 10
+
+	stress_loss_mult = 0.1
+
+	ai_war_chance = -0.25
+
+	ruler_designer_cost = 20
+
+	culture_modifier = {
+		parameter = craven_and_content_traits_looked_down_upon
+		same_culture_opinion = -15
+	}
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+	culture_modifier = {
+		parameter = hill_trait_bonuses
+		hills_advantage = 2
+	}
+
+	culture_modifier = {
+		parameter = introverted_trait_bonuses
+		same_culture_opinion = 10
+		monthly_piety_gain_mult = 0.1
+	}
+
+	culture_modifier = {
+		parameter = life_is_a_joke_trait_same_culture_opinion
+		same_culture_opinion = 5
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_content_desc
+			}
+			desc = trait_content_character_desc
+		}
+	}
+
+	ai_honor = very_low_positive_ai_value
+	ai_greed = high_negative_ai_value
+	ai_energy = medium_negative_ai_value
+	ai_boldness = medium_negative_ai_value
+	ai_zeal = very_low_negative_ai_value
+	ai_vengefulness = very_low_negative_ai_value
+	ai_sociability = very_low_negative_ai_value
+	ai_amenity_spending = -0.1
+
+	compatibility = {
+		content = @pos_compat_medium
+		lazy = @pos_compat_low
+		calm = @pos_compat_low
+		generous = @pos_compat_low
+		forgiving = @pos_compat_low
+		ambitious = @neg_compat_medium
+		diligent = @neg_compat_low
+		greedy = @neg_compat_low
+		brave = @neg_compat_low
+		vengeful = @neg_compat_low
+	}
+}
+just = {
+	category = personality
+	opposites = {
+		arbitrary
+	}
+	stewardship = 2
+	learning = 1
+	intrigue = -3
+
+	parochial_opinion = 15
+	minority_opinion = 15
+	opposite_opinion = -10
+	same_opinion = 10
+	flag = initial_legitimacy_boost
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.25
+	}
+	culture_modifier = {
+		parameter = just_trait_gives_bonuses
+		monthly_prestige_gain_mult = 0.05
+		diplomacy_per_prestige_level = 1
+	}
+
+	culture_modifier = {
+		parameter = honorable_trait_bonuses
+		same_culture_opinion = 10
+		monthly_prestige_gain_mult = 0.05
+	}
+
+	ruler_designer_cost = 40
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_just_desc
+			}
+			desc = trait_just_character_desc
+		}
+	}
+
+	ai_honor = dominant_positive_ai_value
+	ai_zeal = very_low_positive_ai_value
+	ai_vengefulness = very_low_positive_ai_value
+	ai_rationality = low_positive_ai_value
+	ai_amenity_target_baseline = 0.05
+	ai_amenity_spending = 0.05
+
+	compatibility = {
+		just = @pos_compat_high
+		zealous = @pos_compat_medium
+		honest = @pos_compat_medium
+		compassionate = @pos_compat_medium
+		gallant = @pos_compat_medium
+		trusting = @pos_compat_low
+		brave = @pos_compat_low
+		arbitrary = @neg_compat_high
+		deceitful = @neg_compat_medium
+		sadistic = @neg_compat_medium
+		callous = @neg_compat_medium
+		fickle = @neg_compat_low
+		greedy = @neg_compat_low
+		eccentric = @neg_compat_low
+	}
+}
+cynical = {
+	category = personality
+	opposites = {
+		zealous
+	}
+	intrigue = 2
+	learning = 2
+
+	monthly_piety_gain_mult = -0.2
+	faith_conversion_piety_cost_mult = -0.2
+	personal_tenet_slot_add = -1
+	character_spiritual_fulfillment_gain_mult = -0.25
+	character_spiritual_fulfillment_loss_mult = -0.75
+
+	opposite_opinion = -10
+	same_opinion = 10
+	zealot_opinion = -15
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+	culture_modifier = {
+		parameter = build_bonuses_on_religious_traits
+		church_holding_build_gold_cost = 0.2
+		church_holding_holding_build_gold_cost = 0.2
+	}
+
+	culture_modifier = {
+		parameter = life_is_a_joke_trait_same_culture_opinion
+		same_culture_opinion = 5
+	}
+
+	ruler_designer_cost = 30
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_cynical_desc
+			}
+			desc = trait_cynical_character_desc
+		}
+	}
+
+	ai_rationality = medium_positive_ai_value
+	ai_energy = low_negative_ai_value
+	ai_zeal = dominant_negative_ai_value
+	ai_compassion = very_low_negative_ai_value
+
+	compatibility = {
+		cynical = @pos_compat_high
+		whole_of_body = @pos_compat_medium
+		erudite = @pos_compat_medium
+		theologian = @pos_compat_medium
+		honest = @pos_compat_low
+		intellect_good_1 = @pos_compat_low
+		intellect_good_2 = @pos_compat_low
+		intellect_good_3 = @pos_compat_low
+		shrewd = @pos_compat_low
+		zealous = @neg_compat_high
+		intellect_bad_1 = @neg_compat_medium
+		intellect_bad_2 = @neg_compat_medium
+		intellect_bad_3 = @neg_compat_medium
+		trusting = @neg_compat_low
+	}
+}
+zealous = {
+	category = personality
+	opposites = {
+		cynical
+	}
+	martial = 2
+
+	monthly_piety_gain_mult = 0.2
+	faith_conversion_piety_cost_mult = 0.2
+	character_spiritual_fulfillment_gain_mult = 0.25
+	character_spiritual_fulfillment_loss_mult = 1
+
+	opposite_opinion = -10
+	same_opinion_if_same_faith = 15
+	opinion_of_different_faith = -35
+	zealot_opinion = 15
+	personal_tenet_slot_add = 1
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.1
+	}
+	culture_modifier = {
+		parameter = dry_trait_bonuses
+		drylands_advantage = 2
+		desert_advantage = 2
+	}
+
+	culture_modifier = {
+		parameter = build_bonuses_on_religious_traits
+		church_holding_build_gold_cost = -0.25
+		church_holding_holding_build_gold_cost = -0.25
+	}
+
+	ruler_designer_cost = 30
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_zealous_desc
+			}
+			desc = trait_zealous_character_desc
+		}
+	}
+
+	ai_rationality = low_negative_ai_value
+	ai_energy = low_positive_ai_value
+	ai_zeal = dominant_positive_ai_value
+
+	compatibility = {
+		zealous = @pos_compat_high
+		just = @pos_compat_medium
+		devoted = @pos_compat_medium
+		ambitious = @pos_compat_low
+		trusting = @pos_compat_low
+		whole_of_body = @pos_compat_low
+		erudite = @pos_compat_low
+		theologian = @pos_compat_low
+		cynical = @neg_compat_high
+		craven = @neg_compat_medium
+		content = @neg_compat_low
+		paranoid = @neg_compat_low
+		drunkard = @neg_compat_low
+		lifestyle_herbalist = @neg_compat_low
+		lifestyle_mystic = @neg_compat_low
+		eccentric = @neg_compat_low
+	}
+}
+paranoid = {
+	category = personality
+	opposites = {
+		trusting
+	}
+	diplomacy = -1
+	intrigue = 3
+
+	stress_gain_mult = 1
+	dread_gain_mult = 0.25
+
+	enemy_scheme_secrecy_add = -10
+	enemy_personal_scheme_success_chance_add = -25
+
+	character_travel_speed = -10
+	character_travel_safety = 10
+
+	flag = trait_unlocks_t2_countermeasures
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.25
+	}
+	culture_modifier = {
+		parameter = forest_trait_bonuses
+		forest_min_combat_roll = 2
+		taiga_min_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = jungle_trait_bonuses
+		jungle_min_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = hill_trait_bonuses
+		hills_min_combat_roll = 2
+	}
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.15
+	}
+
+	opinion_of_vassal = -10
+
+	ruler_designer_cost = -10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_paranoid_desc
+			}
+			desc = trait_paranoid_character_desc
+		}
+	}
+
+	ai_honor = low_negative_ai_value
+	ai_boldness = low_negative_ai_value
+	ai_rationality = low_negative_ai_value
+	ai_vengefulness = low_positive_ai_value
+	ai_compassion = very_low_negative_ai_value
+	ai_sociability = medium_negative_ai_value
+	ai_amenity_target_baseline = -0.1
+
+	compatibility = {
+		paranoid = @pos_compat_low
+		cynical = @pos_compat_low
+		honest = @pos_compat_low
+		trusting = @neg_compat_high
+		forgiving = @neg_compat_medium
+		deceitful = @neg_compat_high
+		sadistic = @neg_compat_high
+		callous = @neg_compat_high
+		vengeful = @neg_compat_high
+		gregarious = @neg_compat_medium
+		lustful = @neg_compat_medium
+		greedy = @neg_compat_medium
+		ambitious = @neg_compat_medium
+		eccentric = @neg_compat_medium
+	}
+}
+sadistic = {
+	category = personality
+	opposites = {
+		compassionate
+		callous
+	}
+	intrigue = 2
+	prowess = 4
+
+	dread_baseline_add = 35
+
+	general_opinion = -10
+
+	courtly_opinion = -10
+
+	ruler_designer_cost = 40
+
+	flag = can_murder_own_children
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_sadistic_desc
+			}
+			desc = trait_sadistic_character_desc
+		}
+	}
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.25
+	}
+	ai_honor = very_high_negative_ai_value
+	ai_compassion = dominant_negative_ai_value
+
+	compatibility = {
+		sadistic = @pos_compat_medium
+		torturer = @pos_compat_low
+		callous = @pos_compat_low
+		arbitrary = @pos_compat_low
+		compassionate = @neg_compat_high
+		generous = @neg_compat_high
+		just = @neg_compat_medium
+		forgiving = @neg_compat_medium
+		trusting = @neg_compat_low
+		curious = @neg_compat_low
+	}
+}
+stubborn = {
+	category = personality
+	opposites = {
+		fickle
+		eccentric
+	}
+	stewardship = 3
+	negate_health_penalty_add = 0.25
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+	culture_modifier = {
+		parameter = winter_trait_bonuses
+		winter_movement_speed = 0.1
+	}
+
+	culture_modifier = {
+		parameter = mountain_trait_bonuses
+		mountains_min_combat_roll = 2
+		desert_mountains_min_combat_roll = 2
+	}
+
+	rite_modifier = {
+		parameter = tenet_mountain_worship_trait_bonuses
+		mountains_min_combat_roll = 2
+		desert_mountains_min_combat_roll = 2
+	}
+
+	rite_modifier = {
+		parameter = tenet_monophysitism_stubborn_bonus
+		monthly_piety_gain_mult = 0.1
+		clergy_opinion = 10
+	}
+
+	culture_modifier = {
+		parameter = hill_trait_bonuses
+		hills_min_combat_roll = 5
+	}
+
+	liege_opinion = -5
+	minority_opinion = -5
+	parochial_opinion = -10
+	courtly_opinion = -10
+
+	ruler_designer_cost = 30
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_stubborn_desc
+			}
+			desc = trait_stubborn_character_desc
+		}
+	}
+
+	ai_honor = medium_positive_ai_value
+	ai_rationality = very_low_negative_ai_value
+	ai_vengefulness = medium_positive_ai_value
+	ai_amenity_target_baseline = 0.1
+	ai_amenity_spending = 0.05
+
+	compatibility = {
+		patient = @pos_compat_low
+		forgiving = @neg_compat_low
+		fickle = @neg_compat_low
+	}
+}
+depressed_1 = {
+	category = health
+	flag = lowers_health
+	group_equivalence = depressed
+	level = 1
+
+	diplomacy = -1
+	stewardship = -1
+	martial = -1
+	intrigue = -1
+	health = -0.5
+
+	fertility = -0.1
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+	shown_in_ruler_designer = no
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_depressed_1_desc
+			}
+			desc = trait_depressed_1_character_desc
+		}
+	}
+
+	ai_energy = -15
+	ai_sociability = medium_negative_ai_value
+}
+depressed_genetic = {
+	birth = 0.5
+	random_creation = 0.5
+	genetic = yes
+	category = health
+	flag = lowers_health
+	group_equivalence = depressed
+	level = 2
+
+	diplomacy = -1
+	stewardship = -1
+	martial = -1
+	intrigue = -1
+	health = -0.5
+
+	fertility = -0.1
+
+	shown_in_encyclopedia = no
+
+	ruler_designer_cost = -20
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_depressed_genetic_desc
+			}
+			desc = trait_depressed_genetic_character_desc
+		}
+	}
+
+	ai_energy = -15
+	#ai_sociability = medium_negative_ai_value
+}
+lunatic_1 = { # Highly event driven, Schizophrenia
+
+	group_equivalence = lunatic
+	level = 1
+
+	vassal_opinion = -10
+	attraction_opinion = -10
+	same_opinion = 10
+	enemy_hostile_scheme_phase_duration_add = minor_scheme_phase_duration_malus_value
+	health = -0.25
+	category = health
+	flag = lowers_health
+
+	shown_in_ruler_designer = no
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.5
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_lunatic_1_desc
+			}
+			desc = trait_lunatic_1_character_desc
+		}
+	}
+
+	ai_honor = -10
+	ai_rationality = -200
+	ai_boldness = 50
+}
+lunatic_genetic = { # Highly event driven, Schizophrenia
+	birth = 0.5
+	random_creation = 0.5
+	genetic = yes
+	category = health
+	flag = lowers_health
+
+	group_equivalence = lunatic
+	level = 2
+	health = -0.25
+
+	vassal_opinion = -10
+	attraction_opinion = -10
+	enemy_hostile_scheme_phase_duration_add = minor_scheme_phase_duration_malus_value
+	same_opinion = 10
+
+	shown_in_encyclopedia = no
+
+	ruler_designer_cost = -15
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.5
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_lunatic_genetic_desc
+			}
+			desc = trait_lunatic_genetic_character_desc
+		}
+	}
+
+	ai_honor = -10
+	ai_rationality = -200
+	ai_boldness = 50
+}
+possessed_1 = { # Highly event driven, Temporal lobe epilepsy
+
+	group_equivalence = possessed
+	level = 1
+
+	category = health
+	flag = lowers_health
+
+	monthly_learning_lifestyle_xp_gain_mult = 0.1
+	health = -0.5
+
+	attraction_opinion = -10
+	same_opinion = 15
+
+	shown_in_ruler_designer = no
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.5
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_possessed_1_desc
+			}
+			desc = trait_possessed_1_character_desc
+		}
+	}
+
+	ai_rationality = -30
+	ai_boldness = 25
+	ai_vengefulness = 25
+
+	flag = gnostic_learning_piety_trait
+}
+possessed_genetic = { # Highly event driven, Temporal lobe epilepsy
+	birth = 0.5
+	random_creation = 0.5
+	genetic = yes
+	category = health
+	flag = lowers_health
+
+	group_equivalence = possessed
+	level = 2
+
+	monthly_learning_lifestyle_xp_gain_mult = 0.1
+	health = -0.5
+
+	attraction_opinion = -10
+	same_opinion = 15
+
+	shown_in_encyclopedia = no
+
+	ruler_designer_cost = -20
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.5
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_possessed_genetic_desc
+			}
+			desc = trait_possessed_genetic_character_desc
+		}
+	}
+
+	ai_rationality = -30
+	ai_boldness = 25
+	ai_vengefulness = 25
+}
+ill = {
+	opposites = {
+		pneumonic
+	}
+
+	health = -1
+	elderly_health = -1
+	prowess_mult = -0.4
+	fertility = -0.2
+
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -10
+	dread_loss_mult = 1
+
+	ruler_designer_cost = 0
+
+	flag = illness
+	flag = debilitating_illness
+	flag = blocks_getting_non_epidemic_disease
+	flag = is_healthy_trigger_flag
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.05
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_ill_desc
+			}
+			desc = trait_ill_character_desc
+		}
+	}
+
+	ai_energy = -25
+}
+pneumonic = {
+	opposites = {
+		ill
+	}
+
+	diplomacy = -2
+	stewardship = -2
+	martial = -2
+	intrigue = -2
+	learning = -2
+	health = -3
+	elderly_health = -2
+	prowess_mult = -0.8
+	fertility = -0.5
+
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -10
+	dread_loss_mult = 1
+
+	ruler_designer_cost = 0
+
+	flag = illness
+	flag = debilitating_illness
+	flag = blocks_getting_non_epidemic_disease
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_pneumonic_desc
+			}
+			desc = trait_pneumonic_character_desc
+		}
+	}
+
+	ai_energy = -50
+}
+great_pox = { #Syphilis
+	inherit_chance = 10
+
+	diplomacy = -1
+	stewardship = -1
+	martial = -1
+	intrigue = -1
+	learning = -1
+	health = -1
+	fertility = -0.2
+
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -20
+	dread_loss_mult = 1
+
+	attraction_opinion = -10
+
+	ruler_designer_cost = -10
+
+	flag = illness
+	flag = blocks_getting_non_epidemic_disease
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_great_pox_desc
+			}
+			desc = trait_great_pox_character_desc
+		}
+	}
+
+	ai_energy = -15
+}
+early_great_pox = { #Great pox, but looks like lover's pox
+
+	dread_baseline_add = -5	#Mimic's Lover's Pox loss at this stage.
+
+	attraction_opinion = -20
+	category = health
+
+	shown_in_ruler_designer = no
+	shown_in_encyclopedia = no
+
+	flag = illness
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_early_great_pox_desc
+			}
+			desc = trait_early_great_pox_character_desc
+		}
+	}
+}
+lovers_pox = {
+	inherit_chance = 10
+
+	dread_baseline_add = -5
+
+	attraction_opinion = -20
+	category = health
+
+	ruler_designer_cost = 0
+
+	flag = illness
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_lovers_pox_desc
+			}
+			desc = trait_lovers_pox_character_desc
+		}
+	}
+}
+leper = {
+	health = -1.5
+	prowess_mult = -0.8
+	fertility = -0.95
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -20
+	dread_loss_mult = 1
+
+	attraction_opinion = -35
+	general_opinion = -10
+
+	ruler_designer_cost = -30
+
+	flag = illness
+	flag = debilitating_illness
+	flag = blocks_getting_non_epidemic_disease
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.5
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_leper_desc
+			}
+			desc = trait_leper_character_desc
+		}
+	}
+
+	ai_energy = -15
+}
+maimed = {
+
+	diplomacy = -2
+	martial = -2
+	stewardship = -2
+	intrigue = -2
+	learning = -2
+	prowess = -4
+
+	culture_modifier = {
+		parameter = wounds_and_scars_give_bonuses
+		monthly_prestige_gain_mult = 0.2
+		same_culture_opinion = 15
+	}
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.35
+	}
+
+	category = health
+
+	dread_baseline_add = -15
+	dread_loss_mult = 1
+
+	attraction_opinion = -10
+
+	same_opinion = 5
+
+	shown_in_ruler_designer = no
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_maimed_desc
+			}
+			desc = trait_maimed_character_desc
+		}
+	}
+}
+one_eyed = {
+	category = health
+	prowess = -2
+
+	dread_baseline_add = 10
+
+	attraction_opinion = -5
+
+	culture_modifier = {
+		parameter = wounds_and_scars_give_bonuses
+		monthly_prestige_gain_mult = 0.1
+		same_culture_opinion = 5
+	}
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.15
+	}
+
+	ruler_designer_cost = 10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_one_eyed_desc
+			}
+			desc = trait_one_eyed_character_desc
+		}
+	}
+
+	ai_energy = -10
+}
+one_legged = {
+	category = health
+	prowess = -4
+
+	dread_baseline_add = -10
+
+	attraction_opinion = -10
+
+	culture_modifier = {
+		parameter = wounds_and_scars_give_bonuses
+		monthly_prestige_gain_mult = 0.15
+		same_culture_opinion = 10
+	}
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.15
+	}
+
+	ruler_designer_cost = -5
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_one_legged_desc
+			}
+			desc = trait_one_legged_character_desc
+		}
+	}
+
+	ai_energy = -10
+}
+infirm = {
+	diplomacy = -1
+	martial = -1
+	prowess_mult = -0.2
+	health = -0.25
+	fertility = -0.1
+	ai_energy = -10
+
+	flag = infirm_random_xp_gain
+	flag = age_related_ailment
+	flag = is_healthy_trigger_flag
+
+	category = health
+	flag = lowers_health
+
+	disables_combat_leadership = yes
+
+	ruler_designer_cost = -20
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_infirm_desc
+			}
+			desc = trait_infirm_character_desc
+		}
+	}
+
+	tracks = {
+		infirm = {
+			25 = {
+				diplomacy = -1
+				martial = -1
+				stewardship = -1
+				prowess_mult = -0.2
+				health = -0.25
+				fertility = -0.1
+				dread_baseline_add = -5
+				dread_loss_mult = 0.25
+				attraction_opinion = -5
+				ai_energy = -10
+			}
+			50 = {
+				diplomacy = -2
+				martial = -2
+				stewardship = -2
+				prowess_mult = -0.2
+				health = -0.25
+				fertility = -0.1
+				dread_baseline_add = -10
+				dread_loss_mult = 0.25
+				attraction_opinion = -5
+				ai_energy = -10
+			}
+			75 = {
+				diplomacy = -2
+				martial = -2
+				stewardship = -2
+				prowess_mult = -0.2
+				health = -0.25
+				fertility = -0.1
+				dread_baseline_add = -10
+				dread_loss_mult = 0.25
+				attraction_opinion = -5
+				ai_energy = -10
+			}
+			100 = {
+				diplomacy = -2
+				martial = -2
+				stewardship = -2
+				prowess_mult = -0.2
+				health = -0.25
+				fertility = -0.1
+				dread_baseline_add = -10
+				dread_loss_mult = 0.25
+				attraction_opinion = -5
+				ai_energy = -10
+			}
+		}
+	}
+}
+withering_mind = {
+	learning = -2
+	monthly_lifestyle_xp_gain_mult = -0.25
+	stress_gain_mult = 0.2
+	ai_rationality = -25
+
+	flag = withering_mind_random_xp_gain
+	flag = incapable_on_max_level
+	flag = age_related_ailment
+	flag = is_healthy_trigger_flag
+
+	category = health
+
+	ruler_designer_cost = -20
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_withering_mind_desc
+			}
+			desc = trait_withering_mind_character_desc
+		}
+	}
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.75
+	}
+
+	tracks = {
+		withering_mind = {
+			25 = {
+				diplomacy_mult = -0.25
+				martial_mult = -0.25
+				stewardship_mult = -0.25
+				intrigue_mult = -0.25
+				learning_mult = -0.25
+				monthly_lifestyle_xp_gain_mult = -0.25
+				stress_gain_mult = 0.2
+				ai_rationality = -25
+			}
+			50 = {
+				diplomacy_mult = -0.25
+				martial_mult = -0.25
+				stewardship_mult = -0.25
+				intrigue_mult = -0.25
+				learning_mult = -0.25
+				monthly_lifestyle_xp_gain_mult = -0.25
+				stress_gain_mult = 0.2
+				ai_rationality = -25
+			}
+			75 = {
+				diplomacy_mult = -0.25
+				martial_mult = -0.25
+				stewardship_mult = -0.25
+				intrigue_mult = -0.25
+				learning_mult = -0.25
+				monthly_lifestyle_xp_gain_mult = -0.5
+				stress_gain_mult = 0.2
+				ai_rationality = -25
+			}
+			100 = {
+				diplomacy_mult = -0.25
+				martial_mult = -0.25
+				stewardship_mult = -0.25
+				intrigue_mult = -0.25
+				learning_mult = -0.25
+				monthly_lifestyle_xp_gain_mult = -0.5
+				stress_gain_mult = 0.2
+				ai_rationality = -25
+			}
+		}
+	}
+}
+clouded_eyes = {
+	martial = -1
+	prowess = -2
+
+	flag = clouded_eyes_random_xp_gain
+	flag = age_related_ailment
+	flag = is_healthy_trigger_flag
+	flag = blind_on_max_level
+
+	category = health
+	flag = lowers_health
+
+	ruler_designer_cost = -20
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_clouded_eyes_desc
+			}
+			desc = trait_clouded_eyes_character_desc
+		}
+	}
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+
+	tracks = {
+		clouded_eyes = {
+			25 = {
+				martial = -1
+				prowess = -2
+			}
+			50 = {
+				martial = -1
+				prowess = -2
+			}
+			75 = {
+				martial = -1
+				stewardship = -1
+				intrigue = -1
+				prowess = -2
+
+				dread_baseline_add = -5
+
+				attraction_opinion = -5
+			}
+			100 = {
+				martial = -2
+				stewardship = -1
+				intrigue = -1
+				prowess = -2
+
+				health = -0.25
+
+				dread_baseline_add = -5
+
+				attraction_opinion = -5
+			}
+		}
+	}
+}
+fragile_bones = {
+	character_travel_speed_mult = -0.1
+	prowess_mult = -0.1
+	advantage = -3
+	life_expectancy = -3
+	enemy_hostile_scheme_success_chance_max_add = 5
+
+	flag = fragile_bones_random_xp_gain
+	flag = age_related_ailment
+	flag = is_healthy_trigger_flag
+	flag = wounds_twice_as_bad
+	flag = lowers_health
+
+	category = health
+
+	ruler_designer_cost = -20
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_fragile_bones_desc
+			}
+			desc = trait_fragile_bones_character_desc
+		}
+	}
+
+	tracks = {
+		fragile_bones = {
+			25 = {
+				character_travel_speed_mult = -0.1
+				prowess_mult = -0.1
+				advantage = -3
+				life_expectancy = -3
+				enemy_hostile_scheme_success_chance_max_add = 10
+			}
+			50 = {
+				character_travel_speed_mult = -0.1
+				prowess_mult = -0.1
+				advantage = -3
+				life_expectancy = -3
+				enemy_hostile_scheme_success_chance_max_add = 10
+			}
+			75 = {
+				character_travel_speed_mult = -0.1
+				prowess_mult = -0.1
+				advantage = -5
+				life_expectancy = -5
+				enemy_hostile_scheme_success_chance_max_add = 15
+			}
+			100 = {
+				character_travel_speed_mult = -0.1
+				prowess_mult = -0.1
+				advantage = -10
+				life_expectancy = -10
+				enemy_hostile_scheme_success_chance_max_add = 15
+			}
+		}
+	}
+}
+incapable = {
+	diplomacy_mult = -1
+	martial_mult = -1
+	stewardship_mult = -1
+	intrigue_mult = -1
+	learning_mult = -1
+	prowess_mult = -1
+	health = -2
+
+	dread_baseline_add = -25
+	dread_loss_mult = 1
+	category = health
+	flag = lowers_health
+
+	incapacitating = yes
+
+	can_have_children = no
+
+	disables_combat_leadership = yes
+
+	shown_in_ruler_designer = no
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -1
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_incapable_desc
+			}
+			desc = trait_incapable_character_desc
+		}
+	}
+
+	ai_energy = -100
+
+	flag = is_healthy_trigger_flag
+}
+gout_ridden = {
+	diplomacy_mult = -0.1
+	martial_mult = -0.1
+	prowess_mult = -0.2
+	health = -1
+
+	dread_baseline_add = -5
+	category = health
+	flag = lowers_health
+	attraction_opinion = -15
+
+	ruler_designer_cost = -5
+
+	flag = illness
+	flag = debilitating_illness
+	flag = blocks_getting_non_epidemic_disease
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_gout_ridden_desc
+			}
+			desc = trait_gout_ridden_character_desc
+		}
+	}
+
+	ai_energy = -15
+}
+consumption = { # Tuberculosis
+	diplomacy = -2
+	stewardship = -1
+	intrigue = -2
+	prowess_mult = -0.4
+	health = -2.5
+	child_health = -1
+	elderly_health = -2
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -10
+	dread_loss_mult = 1
+
+	attraction_opinion = -10
+
+	ruler_designer_cost = 0
+
+	flag = illness
+	flag = debilitating_illness
+	flag = contagious_deadly_disease
+	flag = epidemic_disease
+	flag = blocks_getting_non_epidemic_disease
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_consumption_desc
+			}
+			desc = trait_consumption_character_desc
+		}
+	}
+
+	ai_energy = -50
+}
+cancer = {
+	health = -3
+	elderly_health = -1
+	fertility = -0.20
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -15
+	dread_loss_mult = 1
+
+	ruler_designer_cost = -10
+
+	flag = illness
+	flag = debilitating_illness
+	flag = blocks_getting_non_epidemic_disease
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_cancer_desc
+			}
+			desc = trait_cancer_character_desc
+		}
+	}
+
+	ai_energy = -25
+}
+typhus = {
+	diplomacy = -1
+	stewardship = -2
+	intrigue = -1
+	learning = -2
+	prowess_mult = -0.8
+	health = -4.5
+	elderly_health = -1
+	fertility = -0.2
+
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -15
+	dread_loss_mult = 1
+
+	attraction_opinion = -10
+
+	ruler_designer_cost = 0
+
+	flag = illness
+	flag = debilitating_illness
+	flag = contagious_deadly_disease
+	flag = epidemic_disease
+	flag = blocks_getting_non_epidemic_disease
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_typhus_desc
+			}
+			desc = trait_typhus_character_desc
+		}
+	}
+
+	ai_energy = -50
+}
+bubonic_plague = {
+	diplomacy = -2
+	martial = -3
+	stewardship = -2
+	intrigue = -3
+	learning = -2
+	prowess_mult = -0.8
+	health = -7
+	elderly_health = -2
+	fertility = -0.50
+
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -30
+	dread_loss_mult = 1
+
+	attraction_opinion = -30
+
+	shown_in_ruler_designer = no
+
+	flag = illness
+	flag = debilitating_illness
+	flag = contagious_deadly_disease
+	flag = epidemic_disease
+	flag = blocks_getting_non_epidemic_disease
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -1
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_bubonic_plague_desc
+			}
+			desc = trait_bubonic_plague_character_desc
+		}
+	}
+
+	ai_energy = -75
+}
+smallpox = {
+	diplomacy = -2
+	stewardship = -1
+	learning = -2
+	prowess_mult = -0.8
+	health = -4.5
+	elderly_health = -1.5
+	fertility = -0.25
+
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -15
+	dread_loss_mult = 1
+
+	attraction_opinion = -10
+
+	ruler_designer_cost = 0
+
+	flag = illness
+	flag = debilitating_illness
+	flag = contagious_deadly_disease
+	flag = epidemic_disease
+	flag = blocks_getting_non_epidemic_disease
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_smallpox_desc
+			}
+			desc = trait_smallpox_character_desc
+		}
+	}
+
+	ai_energy = -75
+}
+measles = {
+	diplomacy = -2
+	stewardship = -1
+	intrigue = -1
+	learning = -2
+	prowess_mult = -0.4
+	health = -3
+	child_health = -3
+
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -5
+
+	attraction_opinion = -10
+
+	ruler_designer_cost = 0
+
+	flag = illness
+	flag = debilitating_illness
+	flag = contagious_deadly_disease
+	flag = epidemic_disease
+	flag = blocks_getting_non_epidemic_disease
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_measles_desc
+			}
+			desc = trait_measles_character_desc
+		}
+	}
+
+	ai_energy = -75
+}
+dysentery = { # Bloody Flux
+	diplomacy = -2
+	martial = -1
+	intrigue = -2
+	prowess_mult = -0.8
+	health = -3.5
+	elderly_health = -2
+
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -50
+
+	attraction_opinion = -5
+
+	ruler_designer_cost = 0
+
+	flag = illness
+	flag = debilitating_illness
+	flag = contagious_deadly_disease
+	flag = epidemic_disease
+	flag = blocks_getting_non_epidemic_disease
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_dysentery_desc
+			}
+			desc = trait_dysentery_character_desc
+		}
+	}
+
+	ai_energy = -75
+}
+ergotism = { # Holy Fire
+	diplomacy = -6
+	stewardship = -1
+	intrigue = -2
+	learning = -2
+	health = -3.5
+
+	category = health
+	flag = lowers_health
+
+	dread_baseline_add = -25
+
+	attraction_opinion = -10
+
+	ruler_designer_cost = 0
+
+	flag = illness
+	flag = debilitating_illness
+	flag = epidemic_disease
+	flag = blocks_getting_non_epidemic_disease
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.25
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_ergotism_desc
+			}
+			desc = trait_ergotism_character_desc
+		}
+	}
+
+	ai_energy = -75
+}
+blind = {
+	category = health
+	flag = lowers_health
+	martial = -6
+	stewardship = -2
+	intrigue = -2
+	prowess = -10
+	health = -0.25
+
+	dread_baseline_add = -10
+
+	attraction_opinion = -10
+
+	ruler_designer_cost = -10
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.35
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_blind_desc
+			}
+			desc = trait_blind_character_desc
+		}
+	}
+}
+beauty_bad_1 = {
+	opposites = {
+		beauty_good
+		beauty_bad_2
+		beauty_bad_3
+	}
+
+	diplomacy = -1
+	fertility = -0.1
+
+	birth = 0.5
+	random_creation = 0.5
+
+	attraction_opinion = -10
+
+	group = beauty_bad
+	level = 1
+
+	genetic = yes
+	physical = yes
+	portrait_extremity_shift = 0.1
+	ugliness_portrait_extremity_shift = 0.4
+
+	ruler_designer_cost = -10
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.05
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_beauty_bad_1_desc
+			}
+			desc = trait_beauty_bad_1_character_desc
+		}
+	}
+}
+beauty_bad_2 = {
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_severe
+		learning = 3
+		maa_toughness_mult = 0.1
+		legitimacy_gain_mult = 0.2
+		dread_baseline_add = 10
+	}
+	opposites = {
+		beauty_good
+		beauty_bad_3
+		beauty_bad_1
+	}
+
+	diplomacy = -2
+	fertility = -0.2
+
+	birth = 0.25
+	random_creation = 0.25
+
+	attraction_opinion = -20
+
+	group = beauty_bad
+	level = 2
+
+	genetic = yes
+	physical = yes
+	portrait_extremity_shift = 0.18
+	ugliness_portrait_extremity_shift = 0.6
+
+	ruler_designer_cost = -20
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_beauty_bad_2_desc
+			}
+			desc = trait_beauty_bad_2_character_desc
+		}
+	}
+}
+beauty_bad_3 = {
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_grave
+		learning = 4
+		maa_toughness_mult = 0.2
+		legitimacy_gain_mult = 0.3
+		dread_baseline_add = 20
+		clergy_opinion = 15
+	}
+	opposites = {
+		beauty_good
+		beauty_bad_2
+		beauty_bad_1
+	}
+
+	birth = 0.15
+	random_creation = 0.15
+
+	diplomacy = -3
+	fertility = -0.3
+
+	attraction_opinion = -30
+
+	group = beauty_bad
+	level = 3
+
+	genetic = yes
+	physical = yes
+	portrait_extremity_shift = 0.27
+	ugliness_portrait_extremity_shift = 0.8
+
+	ruler_designer_cost = -30
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.15
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_beauty_bad_3_desc
+			}
+			desc = trait_beauty_bad_3_character_desc
+		}
+	}
+}
+beauty_good_1 = {
+	opposites = {
+		beauty_bad
+		beauty_good_2
+		beauty_good_3
+	}
+
+	diplomacy = 1
+	fertility = 0.1
+
+	birth = 0.5
+	random_creation = 0.5
+
+	attraction_opinion = 10
+
+	group = beauty_good
+	level = 1
+
+	genetic = yes
+	physical = yes
+	good = yes
+
+	genetic_constraint_all = beauty_1
+	genetic_constraint_men = male_beauty_1
+	genetic_constraint_women = female_beauty_1
+
+	ruler_designer_cost = 40
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = 0.1
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_beauty_good_1_desc
+			}
+			desc = trait_beauty_good_1_character_desc
+		}
+	}
+}
+beauty_good_2 = {
+	opposites = {
+		beauty_bad
+		beauty_good_1
+		beauty_good_3
+	}
+
+	diplomacy = 2
+	fertility = 0.2
+
+	birth = 0.25
+	random_creation = 0.25
+
+	attraction_opinion = 20
+
+	# pretty if female
+	# handsome if male
+
+	group = beauty_good
+	level = 2
+
+	ruler_designer_cost = 80
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.15
+	}
+
+	name = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_beauty_good_male_2
+			}
+			triggered_desc = {
+				trigger = { is_female = yes }
+				desc = trait_beauty_good_female_2
+			}
+			desc = trait_beauty_good_male_2
+		}
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_beauty_good_2_desc
+			}
+			desc = trait_beauty_good_2_character_desc
+		}
+	}
+
+	genetic = yes
+	physical = yes
+	good = yes
+
+	genetic_constraint_all = beauty_2
+	genetic_constraint_men = male_beauty_2
+	genetic_constraint_women = female_beauty_2
+}
+beauty_good_3 = {
+	opposites = {
+		beauty_bad
+		beauty_good_2
+		beauty_good_1
+	}
+
+	birth = 0.15
+	random_creation = 0.15
+
+	diplomacy = 3
+	fertility = 0.3
+
+	attraction_opinion = 30
+
+	group = beauty_good
+	level = 3
+
+	genetic = yes
+	physical = yes
+	good = yes
+
+	genetic_constraint_all = beauty_3
+	genetic_constraint_men = male_beauty_3
+	genetic_constraint_women = female_beauty_3
+
+	ruler_designer_cost = 120
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.2
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_beauty_good_3_desc
+			}
+			desc = trait_beauty_good_3_character_desc
+		}
+	}
+}
+intellect_bad_1 = {
+	opposites = {
+		shrewd
+		intellect_good
+		intellect_bad_2 #To prevent multiple tiers of the same congenital trait
+		intellect_bad_3
+	}
+
+	diplomacy = -2
+	martial = -2
+	stewardship = -2
+	intrigue = -2
+	learning = -2
+
+	monthly_lifestyle_xp_gain_mult = -0.1
+
+	birth = 0.5
+	random_creation = 0.5
+
+	group = intellect_bad
+	level = 1
+
+	ai_rationality = high_negative_ai_value
+
+	genetic = yes
+	physical = yes
+
+	ruler_designer_cost = -15
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+
+	compatibility = {
+		intellect_bad_1 = @pos_compat_medium
+		intellect_bad_2 = @pos_compat_medium
+		intellect_bad_3 = @pos_compat_medium
+		dull = @pos_compat_medium
+		intellect_good_1 = @neg_compat_medium
+		intellect_good_2 = @neg_compat_medium
+		intellect_good_3 = @neg_compat_medium
+		shrewd = @neg_compat_medium
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_intellect_bad_1_desc
+			}
+			desc = trait_intellect_bad_1_character_desc
+		}
+	}
+}
+intellect_bad_2 = {
+	opposites = {
+		shrewd
+		intellect_good
+		intellect_bad_3 #To prevent multiple tiers of the same congenital trait
+		intellect_bad_1
+	}
+
+	diplomacy = -4
+	martial = -4
+	stewardship = -4
+	intrigue = -4
+	learning = -4
+
+	monthly_lifestyle_xp_gain_mult = -0.2
+
+	birth = 0.25
+	random_creation = 0.25
+
+	group = intellect_bad
+	level = 2
+
+	ai_rationality = very_high_negative_ai_value
+
+	genetic = yes
+	physical = yes
+
+	ruler_designer_cost = -30
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.15
+	}
+
+	compatibility = {
+		intellect_bad_1 = @pos_compat_medium
+		intellect_bad_2 = @pos_compat_medium
+		intellect_bad_3 = @pos_compat_medium
+		dull = @pos_compat_medium
+		intellect_good_1 = @neg_compat_medium
+		intellect_good_2 = @neg_compat_medium
+		intellect_good_3 = @neg_compat_medium
+		shrewd = @neg_compat_medium
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_intellect_bad_2_desc
+			}
+			desc = trait_intellect_bad_2_character_desc
+		}
+	}
+}
+intellect_bad_3 = {
+	opposites = {
+		shrewd
+		intellect_good
+		intellect_bad_2 #To prevent multiple tiers of the same congenital trait
+		intellect_bad_1
+	}
+
+	birth = 0.05
+	random_creation = 0.05
+
+	diplomacy = -8
+	martial = -8
+	stewardship = -8
+	intrigue = -8
+	learning = -8
+
+	monthly_lifestyle_xp_gain_mult = -0.3
+
+	group = intellect_bad
+	level = 3
+
+	ai_rationality = dominant_negative_ai_value
+
+	genetic = yes
+	physical = yes
+
+	ruler_designer_cost = -45
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.2
+	}
+
+	compatibility = {
+		intellect_bad_1 = @pos_compat_medium
+		intellect_bad_2 = @pos_compat_medium
+		intellect_bad_3 = @pos_compat_medium
+		dull = @pos_compat_medium
+		intellect_good_1 = @neg_compat_medium
+		intellect_good_2 = @neg_compat_medium
+		intellect_good_3 = @neg_compat_medium
+		shrewd = @neg_compat_medium
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_intellect_bad_3_desc
+			}
+			desc = trait_intellect_bad_3_character_desc
+		}
+	}
+}
+intellect_good_1 = {
+	opposites = {
+		dull
+		intellect_bad
+		intellect_good_2 #To prevent multiple tiers of the same congenital trait
+		intellect_good_3
+	}
+
+	diplomacy = 1
+	martial = 1
+	stewardship = 1
+	intrigue = 1
+	learning = 1
+
+	monthly_lifestyle_xp_gain_mult = 0.1
+
+	birth = 0.5
+	random_creation = 0.5
+
+	group = intellect_good
+	level = 1
+
+	ai_rationality = high_positive_ai_value
+
+	genetic = yes
+	good = yes
+	physical = yes
+
+	ruler_designer_cost = 80
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.1
+	}
+
+	compatibility = {
+		intellect_good_1 = @pos_compat_medium
+		intellect_good_2 = @pos_compat_medium
+		intellect_good_3 = @pos_compat_medium
+		shrewd = @pos_compat_medium
+		intellect_bad_1 = @neg_compat_medium
+		intellect_bad_2 = @neg_compat_medium
+		intellect_bad_3 = @neg_compat_medium
+		dull = @neg_compat_medium
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_intellect_good_1_desc
+			}
+			desc = trait_intellect_good_1_character_desc
+		}
+	}
+}
+intellect_good_2 = {
+	opposites = {
+		dull
+		intellect_bad
+		intellect_good_3 #To prevent multiple tiers of the same congenital trait
+		intellect_good_1
+	}
+
+	diplomacy = 3
+	martial = 3
+	stewardship = 3
+	intrigue = 3
+	learning = 3
+
+	monthly_lifestyle_xp_gain_mult = 0.2
+
+	birth = 0.25
+	random_creation = 0.25
+
+	group = intellect_good
+	level = 2
+
+	ai_rationality = very_high_positive_ai_value
+
+	genetic = yes
+	good = yes
+	physical = yes
+
+	ruler_designer_cost = 160
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.15
+	}
+
+	compatibility = {
+		intellect_good_1 = @pos_compat_medium
+		intellect_good_2 = @pos_compat_medium
+		intellect_good_3 = @pos_compat_medium
+		shrewd = @pos_compat_medium
+		intellect_bad_1 = @neg_compat_medium
+		intellect_bad_2 = @neg_compat_medium
+		intellect_bad_3 = @neg_compat_medium
+		dull = @neg_compat_medium
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_intellect_good_2_desc
+			}
+			desc = trait_intellect_good_2_character_desc
+		}
+	}
+}
+intellect_good_3 = {
+	opposites = {
+		dull
+		intellect_bad
+		intellect_good_2 #To prevent multiple tiers of the same congenital trait
+		intellect_good_1
+	}
+
+	birth = 0.05
+	random_creation = 0.05
+
+	diplomacy = 5
+	martial = 5
+	stewardship = 5
+	intrigue = 5
+	learning = 5
+
+	monthly_lifestyle_xp_gain_mult = 0.3
+
+	group = intellect_good
+	level = 3
+
+	ai_rationality = dominant_positive_ai_value
+
+	genetic = yes
+	good = yes
+	physical = yes
+
+	ruler_designer_cost = 240
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.2
+	}
+
+	compatibility = {
+		intellect_good_1 = @pos_compat_medium
+		intellect_good_2 = @pos_compat_medium
+		intellect_good_3 = @pos_compat_medium
+		shrewd = @pos_compat_medium
+		intellect_bad_1 = @neg_compat_medium
+		intellect_bad_2 = @neg_compat_medium
+		intellect_bad_3 = @neg_compat_medium
+		dull = @neg_compat_medium
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_intellect_good_3_desc
+			}
+			desc = trait_intellect_good_3_character_desc
+		}
+	}
+}
+physique_bad_1 = {
+	opposites = {
+		strong
+		physique_good
+		physique_bad_2
+		physique_bad_3
+	}
+
+	prowess = -2
+	health = -0.25
+
+	birth = 0.5
+	random_creation = 0.5
+
+	group = physique_bad
+	level = 1
+
+	ruler_designer_cost = -15
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+
+	culture_modifier = {
+		parameter = weak_traits_looked_down_upon
+		same_culture_opinion = -10
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_physique_bad_1_desc
+			}
+			desc = trait_physique_bad_1_character_desc
+		}
+	}
+
+	ai_energy = -10
+
+	genetic = yes
+	physical = yes
+}
+physique_bad_2 = {
+	opposites = {
+		strong
+		physique_good
+		physique_bad_3
+		physique_bad_1
+	}
+
+	prowess = -4
+	health = -0.5
+
+	birth = 0.25
+	random_creation = 0.25
+
+	attraction_opinion = -5
+
+	group = physique_bad
+	level = 2
+
+	culture_modifier = {
+		parameter = weak_traits_looked_down_upon
+		same_culture_opinion = -15
+	}
+
+	ruler_designer_cost = -30
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.15
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_physique_bad_2_desc
+			}
+			desc = trait_physique_bad_2_character_desc
+		}
+	}
+
+	ai_energy = -20
+
+	genetic = yes
+	physical = yes
+}
+physique_bad_3 = {
+	opposites = {
+		strong
+		physique_good
+		physique_bad_2
+		physique_bad_1
+	}
+
+	birth = 0.15
+	random_creation = 0.15
+
+	prowess = -6
+	health = -1
+
+	attraction_opinion = -10
+
+	culture_modifier = {
+		parameter = weak_traits_looked_down_upon
+		same_culture_opinion = -20
+	}
+
+	group = physique_bad
+	level = 3
+
+	ruler_designer_cost = -45
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.2
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_physique_bad_3_desc
+			}
+			desc = trait_physique_bad_3_character_desc
+		}
+	}
+
+	ai_energy = -30
+
+	genetic = yes
+	physical = yes
+}
+physique_good_1 = {
+	opposites = {
+		weak
+		spindly
+		physique_bad
+		physique_good_2
+		physique_good_3
+	}
+
+	prowess = 2
+	health = 0.25
+
+	birth = 0.5
+	random_creation = 0.5
+
+	attraction_opinion = 5
+
+	culture_modifier = {
+		parameter = strong_traits_more_valued
+		monthly_prestige = 0.25
+	}
+
+	group = physique_good
+	level = 1
+
+	ruler_designer_cost = 60
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.1
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_physique_good_1_desc
+			}
+			desc = trait_physique_good_1_character_desc
+		}
+	}
+
+	ai_energy = 10
+
+	genetic = yes
+	physical = yes
+	good = yes
+}
+physique_good_2 = {
+	opposites = {
+		weak
+		spindly
+		physique_bad
+		physique_good_1
+		physique_good_3
+	}
+
+	physical = yes
+
+	prowess = 4
+	health = 0.5
+
+	birth = 0.25
+	random_creation = 0.25
+
+	attraction_opinion = 10
+
+	culture_modifier = {
+		parameter = strong_traits_more_valued
+		monthly_prestige = 0.5
+	}
+
+	group = physique_good
+	level = 2
+
+	ruler_designer_cost = 120
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.15
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_physique_good_2_desc
+			}
+			desc = trait_physique_good_2_character_desc
+		}
+	}
+
+	ai_energy = 20
+
+	genetic = yes
+	good = yes
+}
+physique_good_3 = {
+	opposites = {
+		weak
+		spindly
+		physique_bad
+		physique_good_1
+		physique_good_2
+	}
+
+	birth = 0.15
+	random_creation = 0.15
+
+	prowess = 8
+	health = 1
+
+	attraction_opinion = 15
+
+	culture_modifier = {
+		parameter = strong_traits_more_valued
+		monthly_prestige = 1
+	}
+
+	# amazonian if female
+	# herculean if male
+
+	ruler_designer_cost = 180
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.2
+	}
+
+	name = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_physique_good_male_3
+			}
+			triggered_desc = {
+				trigger = { is_female = yes }
+				desc = trait_physique_good_female_3
+			}
+			desc = trait_physique_good_male_3
+		}
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_physique_good_3_desc
+			}
+			desc = trait_physique_good_3_character_desc
+		}
+	}
+
+	group = physique_good
+	level = 3
+
+	ai_energy = 20
+
+	genetic = yes
+	physical = yes
+	good = yes
+}
+pure_blooded = {
+	physical = yes
+	fertility = -0.5
+	health = -1
+	inbreeding_chance = 0.5
+
+	inherit_chance = 15
+	both_parent_has_trait_inherit_chance = 75
+
+
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 1
+	}
+	
+	monthly_prestige = 1
+	ruler_designer_cost = 50
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_pure_blooded_desc
+			}
+			desc = trait_pure_blooded_character_desc
+		}
+	}
+}
+strong = {
+	opposites = {
+		weak
+		physique_bad
+	}
+	prowess = 4
+	health = 0.5
+	physical = yes
+
+	culture_modifier = {
+		parameter = strong_traits_more_valued
+		monthly_prestige = 0.15
+	}
+
+	ruler_designer_cost = 50
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 1
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_strong_desc
+			}
+			desc = trait_strong_character_desc
+		}
+	}
+
+	ai_energy = 20
+}
+shrewd = {
+	opposites = {
+		intellect_bad
+		dull
+	}
+	diplomacy = 2
+	martial = 2
+	stewardship = 2
+	intrigue = 2
+	learning = 2
+
+	physical = yes
+
+	ruler_designer_cost = 50
+
+	culture_modifier = {
+		parameter = pragmatic_traits_county_opinion_modifiers
+		county_opinion_add = 10
+	}
+	culture_modifier = {
+		parameter = palace_politics_trait_bonuses
+		monthly_influence = 0.4
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_shrewd_desc
+			}
+			desc = trait_shrewd_character_desc
+		}
+	}
+
+	ai_rationality = high_positive_ai_value
+
+	compatibility = {
+		intellect_good_1 = @pos_compat_medium
+		intellect_good_2 = @pos_compat_medium
+		intellect_good_3 = @pos_compat_medium
+		shrewd = @pos_compat_medium
+		intellect_bad_1 = @neg_compat_medium
+		intellect_bad_2 = @neg_compat_medium
+		intellect_bad_3 = @neg_compat_medium
+		dull = @neg_compat_medium
+	}
+	flag = gnostic_learning_piety_trait
+}
+clubfooted = {
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_mild
+		learning = 2
+		maa_toughness_mult = 0.05
+		legitimacy_gain_mult = 0.1
+	}
+	prowess = -2
+
+	#inherit_chance = 15
+	genetic = yes
+	enables_inbred = yes
+	birth = 0.5
+	random_creation = 0.5
+
+	attraction_opinion = -10
+	same_opinion = 10
+	physical = yes
+
+	ruler_designer_cost = 0
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.4
+	}
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_clubfooted_desc
+			}
+			desc = trait_clubfooted_character_desc
+		}
+	}
+}
+hunchbacked = {
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_grave
+		learning = 4
+		maa_toughness_mult = 0.2
+		legitimacy_gain_mult = 0.3
+		dread_baseline_add = 20
+		clergy_opinion = 15
+	}
+	prowess = -2
+
+	#inherit_chance = 15
+	genetic = yes
+	physical = yes
+	enables_inbred = yes
+	birth = 0.5
+	random_creation = 0.5
+
+	attraction_opinion = -30
+	same_opinion = 10
+	vassal_opinion = -10
+
+	ruler_designer_cost = -10
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.4
+	}
+
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_hunchbacked_desc
+			}
+			desc = trait_hunchbacked_character_desc
+		}
+	}
+}
+lisping = {
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_mild
+		learning = 2
+		maa_toughness_mult = 0.05
+		legitimacy_gain_mult = 0.1
+	}
+	diplomacy = -2
+
+	#inherit_chance = 15
+	genetic = yes
+	physical = yes
+
+	birth = 0.5
+	random_creation = 0.5
+
+	same_opinion = 10
+
+	ruler_designer_cost = -5
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.05
+	}
+
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_lisping_desc
+			}
+			desc = trait_lisping_character_desc
+		}
+	}
+
+	ai_sociability = low_negative_ai_value
+}
+stuttering = {
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_mild
+		learning = 2
+		maa_toughness_mult = 0.05
+		legitimacy_gain_mult = 0.1
+	}
+	diplomacy = -2
+
+	#inherit_chance = 15
+	genetic = yes
+	physical = yes
+
+	birth = 0.5
+	random_creation = 0.5
+
+	same_opinion = 10
+
+	ruler_designer_cost = -5
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.1
+	}
+
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_stuttering_desc
+			}
+			desc = trait_stuttering_character_desc
+		}
+	}
+
+	ai_sociability = low_negative_ai_value
+}
+dwarf = {
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_severe
+		learning = 3
+		maa_toughness_mult = 0.1
+		legitimacy_gain_mult = 0.2
+		dread_baseline_add = 10
+	}
+	prowess = -4
+	opposites = {
+		giant
+	}
+
+	health = -0.75
+	inherit_chance = 25
+	both_parent_has_trait_inherit_chance = 100
+	genetic = yes
+	physical = yes
+
+	enables_inbred = yes
+	birth = 0.5
+	random_creation = 0.5
+
+	attraction_opinion = -20
+	same_opinion = 20
+
+	ruler_designer_cost = 0
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.2
+	}
+
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_dwarf_desc
+			}
+			desc = trait_dwarf_character_desc
+		}
+	}
+}
+giant = {
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_severe
+		learning = 3
+		maa_toughness_mult = 0.1
+		legitimacy_gain_mult = 0.2
+		dread_baseline_add = 10
+	}
+	opposites = {
+		dwarf
+	}
+
+	prowess = 8
+	health = -0.75
+
+	inherit_chance = 25
+	both_parent_has_trait_inherit_chance = 75
+	genetic = yes
+	physical = yes
+
+	enables_inbred = yes
+	birth = 0.5
+	random_creation = 0.5
+
+	attraction_opinion = -5
+	tribal_government_opinion = 10
+	glory_hound_opinion = 10
+	same_opinion = 20
+
+	culture_modifier = {
+		parameter = strong_traits_more_valued
+		monthly_prestige = 0.5
+	}
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = 0.2
+	}
+
+
+	ruler_designer_cost = 20
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_giant_desc
+			}
+			desc = trait_giant_character_desc
+		}
+	}
+}
+inbred = {
+	physical = yes
+	diplomacy = -5
+	martial = -5
+	stewardship = -5
+	intrigue = -5
+	learning = -5
+	prowess = -2
+	fertility = -0.5
+	health = -1.75
+
+	inherit_chance = 15
+
+	attraction_opinion = -30
+	vassal_opinion = -10
+
+	ruler_designer_cost = -30
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -1
+	}
+
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_inbred_desc
+			}
+			desc = trait_inbred_character_desc
+		}
+	}
+
+	flag = initial_legitimacy_nerf
+
+	ai_rationality = -50
+	ai_energy = -75
+}
+weak = {
+	opposites = {
+		strong
+		physique_good
+	}
+	prowess = -2
+	health = -0.5
+
+	physical = yes
+
+	attraction_opinion = -10
+	vassal_opinion = -10
+
+	culture_modifier = {
+		parameter = weak_traits_looked_down_upon
+		same_culture_opinion = -15
+	}
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.2
+	}
+
+
+	ruler_designer_cost = -10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_weak_desc
+			}
+			desc = trait_weak_character_desc
+		}
+	}
+
+	ai_energy = -20
+}
+dull = {
+	opposites = {
+		intellect_good
+		shrewd
+	}
+	diplomacy = -2
+	martial = -2
+	stewardship = -2
+	intrigue = -2
+	learning = -2
+
+	physical = yes
+
+	ruler_designer_cost = -20
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_dull_desc
+			}
+			desc = trait_dull_character_desc
+		}
+	}
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.4
+	}
+
+
+	ai_rationality = high_negative_ai_value
+
+	compatibility = {
+		intellect_bad_1 = @pos_compat_medium
+		intellect_bad_2 = @pos_compat_medium
+		intellect_bad_3 = @pos_compat_medium
+		dull = @pos_compat_medium
+		intellect_good_1 = @neg_compat_medium
+		intellect_good_2 = @neg_compat_medium
+		intellect_good_3 = @neg_compat_medium
+		shrewd = @neg_compat_medium
+	}
+}
+spindly = { #Marfan's Syndrome
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_severe
+		learning = 3
+		maa_toughness_mult = 0.1
+		legitimacy_gain_mult = 0.2
+		dread_baseline_add = 10
+	}
+	opposites = {
+		physique_good
+	}
+	prowess = -1
+	health = -0.25
+
+	#inherit_chance = 100 # dominant
+	genetic = yes
+	physical = yes
+	enables_inbred = yes
+
+	birth = 0.5
+	random_creation = 0.5
+
+	attraction_opinion = -10
+
+	culture_modifier = {
+		parameter = weak_traits_looked_down_upon
+		same_culture_opinion = -15
+	}
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.2
+	}
+
+
+	ruler_designer_cost = -10
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_spindly_desc
+			}
+			desc = trait_spindly_character_desc
+		}
+	}
+
+	ai_energy = -20
+}
+scaly = {
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_grave
+		learning = 4
+		maa_toughness_mult = 0.2
+		legitimacy_gain_mult = 0.3
+		dread_baseline_add = 20
+		clergy_opinion = 15
+	}
+	fertility = -0.2
+
+	#inherit_chance = 100 # dominant
+	genetic = yes
+	physical = yes
+	enables_inbred = yes
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.2
+	}
+
+
+	birth = 0.5
+	random_creation = 0.5
+
+	attraction_opinion = -30
+	vassal_opinion = -10
+	same_opinion = 10
+
+	dread_baseline_add = 10
+
+	rite_modifier = {
+		parameter = tenet_astrology_scaly_omen
+		attraction_opinion = 15
+		vassal_opinion = 10
+		monthly_piety_gain_mult = 0.3
+	}
+
+	ruler_designer_cost = 0
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_scaly_desc
+			}
+			desc = trait_scaly_character_desc
+		}
+	}
+}
+albino = {
+	rite_modifier = {
+		parameter = tenet_mystical_birthright_blessed_marks_severe
+		learning = 3
+		maa_toughness_mult = 0.1
+		legitimacy_gain_mult = 0.2
+		dread_baseline_add = 10
+	}
+
+	#inherit_chance = 100 # recessive
+	genetic = yes
+	physical = yes
+
+	birth = 0.5
+	random_creation = 0.5
+
+	general_opinion = -10
+	same_opinion = 10
+
+	dread_baseline_add = 15
+
+	culture_modifier = {
+		parameter = palace_politics_trait_maluses
+		monthly_influence = -0.2
+	}
+
+	rite_modifier = {
+		parameter = tenet_astrology_albino_omen
+		general_opinion = 10
+		same_faith_opinion = 20
+		monthly_piety_gain_mult = 0.3
+	}
+
+	ruler_designer_cost = 0
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_albino_desc
+			}
+			desc = trait_albino_character_desc
+		}
+	}
+}

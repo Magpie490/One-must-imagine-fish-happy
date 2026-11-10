@@ -1,0 +1,331 @@
+
+upgrade_village_to_castle_interaction = {
+
+	category = interaction_category_vassal
+	icon = request_funding_interaction
+	common_interaction = yes
+
+	desc = upgrade_village_to_castle_interaction_desc
+
+	target_type = title
+	target_source = puppet_or_actor
+	target_filter = domain_titles
+	interface_priority = 60
+	ai_frequency_by_tier = {
+		barony = 12
+		county = 12
+		duchy = 12
+		kingdom = 6
+		empire = 6
+		hegemony = 6
+	}
+	is_available = {
+		NOR = {
+			has_government = tribal_government
+			has_government = nomad_government
+			has_government = herder_government
+			has_government = wanua_government
+		}
+		is_landed = yes
+		any_held_county = {
+			filter = {
+				any_county_province = {
+					filter = {
+						has_holding_type = village_holding
+					}
+					has_holding_type = village_holding
+				}
+			}
+			any_county_province = {
+				filter = {
+					has_holding_type = village_holding
+				}
+				has_ongoing_construction = no
+				is_county_capital = no
+				has_holding_type = village_holding
+			}
+		}
+	}
+	is_shown = {
+		scope:actor = {
+			this = scope:recipient
+		}
+	}
+
+	can_be_picked_title = {
+		scope:target = {
+			OR = {
+				holder = scope:actor
+				holder = {
+					liege = scope:actor
+				}
+			}
+			title_province = {
+				tier = tier_barony
+				has_holding_type = village_holding
+			}
+		}
+	}
+	is_valid_showing_failures_only = {
+		scope:actor = { culture = { has_innovation = innovation_motte } }
+	}
+	can_send = {
+		scope:actor = { culture = { has_innovation = innovation_motte } }
+	}
+	cost = {
+		gold = 200
+	}
+	auto_accept = yes
+	on_accept = {
+		scope:target.title_province ?= {
+			set_holding_type = castle_holding
+		}	
+	}
+	ai_will_do = {
+		base = 1500
+	}
+}
+upgrade_village_to_city_interaction = {
+
+	category = interaction_category_vassal
+	icon = request_funding_interaction
+	common_interaction = yes
+
+	desc = upgrade_village_to_city_interaction_desc
+
+	target_type = title
+	target_source = puppet_or_actor
+	target_filter = domain_titles
+	interface_priority = 60
+	ai_frequency_by_tier = {
+		barony = 12
+		county = 12
+		duchy = 12
+		kingdom = 6
+		empire = 6
+		hegemony = 6
+	}
+	is_available = {
+		NOR = {
+			has_government = tribal_government
+			has_government = nomad_government
+			has_government = herder_government
+			has_government = wanua_government
+		}
+		is_landed = yes
+		any_held_county = {
+			filter = {
+				any_county_province = {
+					filter = {
+						has_holding_type = village_holding
+					}
+					has_holding_type = village_holding
+				}
+			}
+			any_county_province = {
+				filter = {
+					has_holding_type = village_holding
+				}
+				has_ongoing_construction = no
+				is_county_capital = no
+				has_holding_type = village_holding
+			}
+		}
+	}
+	is_shown = {
+		scope:actor = {
+			this = scope:recipient
+		}
+	}
+
+	can_be_picked_title = {
+		scope:target = {
+			holder = scope:actor
+			title_province = {
+				tier = tier_barony
+				has_holding_type = village_holding
+			}
+		}
+	}
+	is_valid_showing_failures_only = {
+		scope:actor = { culture = { has_innovation = innovation_city_planning } }
+	}
+	can_send = {
+		scope:actor = { culture = { has_innovation = innovation_city_planning } }
+	}
+	cost = {
+		gold = 200
+	}
+	auto_accept = yes
+	on_accept = {
+		scope:actor = {
+			scope:target.title_province ?= {
+				set_holding_type = city_holding
+			}	
+		}
+	}
+	ai_will_do = {
+		base = 1500
+	}
+}
+upgrade_village_to_temple_interaction = {
+
+	category = interaction_category_vassal
+	icon = request_funding_interaction
+	common_interaction = yes
+
+	desc = upgrade_village_to_temple_interaction_desc
+
+	target_type = title
+	target_source = puppet_or_actor
+	target_filter = domain_titles
+	interface_priority = 60
+	ai_frequency_by_tier = {
+		barony = 12
+		county = 12
+		duchy = 12
+		kingdom = 6
+		empire = 6
+		hegemony = 6
+	}
+	is_available = {
+		NOR = {
+			has_government = tribal_government
+			has_government = nomad_government
+			has_government = herder_government
+			has_government = wanua_government
+		}
+		is_landed = yes
+		any_held_county = {
+			filter = {
+				any_county_province = {
+					filter = {
+						has_holding_type = village_holding
+					}
+					has_holding_type = village_holding
+				}
+			}
+			any_county_province = {
+				filter = {
+					has_holding_type = village_holding
+				}
+				has_ongoing_construction = no
+				is_county_capital = no
+				has_holding_type = village_holding
+			}
+		}
+	}
+	is_shown = {
+		scope:actor = {
+			this = scope:recipient
+		}
+	}
+
+	can_be_picked_title = {
+		scope:target = {
+			holder = scope:actor
+			title_province = {
+				tier = tier_barony
+				has_holding_type = village_holding
+			}
+		}
+	}
+	is_valid_showing_failures_only = {
+		scope:actor = { culture = { has_innovation = innovation_city_planning } }
+	}
+	can_send = {
+		scope:actor = { culture = { has_innovation = innovation_city_planning } }
+	}
+	cost = {
+		gold = 200
+	}
+	auto_accept = yes
+	on_accept = {
+		scope:actor = {
+			scope:target.title_province ?= {
+				set_holding_type = church_holding
+			}	
+		}
+	}
+	ai_will_do = {
+		base = 1500
+	}
+}
+upgrade_village_to_temple_citadel_interaction = {
+
+	category = interaction_category_vassal
+	icon = request_funding_interaction
+	common_interaction = yes
+
+	desc = upgrade_village_to_temple_citadel_interaction_desc
+
+	target_type = title
+	target_source = puppet_or_actor
+	target_filter = domain_titles
+	interface_priority = 60
+	ai_frequency_by_tier = {
+		barony = 12
+		county = 12
+		duchy = 12
+		kingdom = 6
+		empire = 6
+		hegemony = 6
+	}
+	is_available = {
+		has_government = mandala_government
+		is_landed = yes
+		any_held_county = {
+			filter = {
+				any_county_province = {
+					filter = {
+						has_holding_type = village_holding
+					}
+					has_holding_type = village_holding
+				}
+			}
+			any_county_province = {
+				filter = {
+					has_holding_type = village_holding
+				}
+				has_ongoing_construction = no
+				is_county_capital = no
+				has_holding_type = village_holding
+			}
+		}
+	}
+	is_shown = {
+		scope:actor = {
+			this = scope:recipient
+		}
+	}
+
+	can_be_picked_title = {
+		scope:target = {
+			holder = scope:actor
+			title_province = {
+				tier = tier_barony
+				has_holding_type = village_holding
+			}
+		}
+	}
+	is_valid_showing_failures_only = {
+		scope:actor = { culture = { has_innovation = innovation_city_planning } }
+	}
+	can_send = {
+		scope:actor = { culture = { has_innovation = innovation_city_planning } }
+	}
+	cost = {
+		gold = 200
+	}
+	auto_accept = yes
+	on_accept = {
+		scope:actor = {
+			scope:target.title_province ?= {
+				set_holding_type = temple_citadel_holding
+			}	
+		}
+	}
+	ai_will_do = {
+		base = 1500
+	}
+}

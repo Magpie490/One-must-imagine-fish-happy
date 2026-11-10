@@ -1,0 +1,6 @@
+﻿
+village_holding = {
+	alias = { village villages village_holdings }
+	parent = holding_type
+	texture = "gfx/interface/icons/icon_holding_village.dds"
+}

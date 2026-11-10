@@ -1,0 +1,38 @@
+﻿l_english: 
+ d_nf_torchitoriu: "$dynn_Torchitorio$ Family"
+ d_nf_torchitoriu_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ e_titular_frankia:0 "Frankia"
+ e_titular_frankia_adj:0 "Frankish"
+ e_titular_frankia_pre:0 "Franko"
+ merscwalsh:0 "Merscwalsh"
+ merscwalsh_prefix:0 "Merscwalsh"
+ merscwalsh_collective_noun:1 "Merscwalsh"
+ african:0 "Ahfrikan"
+ african_prefix:0 "Ahfrikan"
+ african_collective_noun:1 "Ahfrikans"
+ stationed_troops_modifier:0 "Stationed Professional Troops"
+ stationed_troops_modifier_desc:0 "These troops make their masters power be felt locally."
+ 
+ upgrade_village_to_temple_citadel_interaction:0 "Upgrade Village to Temple Citadel"
+ upgrade_village_to_temple_citadel_interaction_desc:0 "Upgrade Village to Temple Citadel"
+ 
+ upgrade_village_to_temple_interaction:0 "Upgrade Village to Temple"
+ upgrade_village_to_temple_interaction_desc:0 "Upgrade Village to Temple"
+ 
+ upgrade_village_to_city_interaction:0 "Upgrade Village to City"
+ upgrade_village_to_city_interaction_desc:0 "Upgrade Village to City"
+ 
+ upgrade_village_to_castle_interaction:0 "Upgrade Village to Castle"
+ upgrade_village_to_castle_interaction_desc:0 "Upgrade Village to Castle"
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
