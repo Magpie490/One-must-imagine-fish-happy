@@ -3842,20 +3842,20 @@ d_socotra = {
 
 e_germany = {
 	20.1.1 = {
-		change_development_level = 4
+		change_prosperity_level = 4
 	}
 	1000.1.1 = {
-		change_development_level = 8
+		change_prosperity_level = 8
 	}
 
 	1100.1.1 = {
-		change_development_level = 16
+		change_prosperity_level = 16
 	}
 }
 
 e_hre = {
 	20.1.1 = {
-		change_development_level = 4
+		change_prosperity_level = 4
 	}
 	800.12.25 = {
 		holder = 6392 #Charlemagne
@@ -3885,10 +3885,10 @@ e_hre = {
 		holder = 1288 #Otto III
 	}
 	1000.1.1 = {
-		change_development_level = 8
+		change_prosperity_level = 8
 	}
 	1100.1.1 = {
-		change_development_level = 16
+		change_prosperity_level = 16
 	}
 	1002.1.12 = {
 		holder = 1296 #Heinrich II
@@ -3962,15 +3962,15 @@ e_hre = {
 
 e_britannia = {
 	20.1.1 = {
-		change_development_level = 2
+		change_prosperity_level = 2
 	}
 
 	1000.1.1 = {
-		change_development_level = 5
+		change_prosperity_level = 5
 	}
 
 	1100.1.1 = {
-		change_development_level = 12
+		change_prosperity_level = 12
 	}
 }
 
@@ -4135,7 +4135,7 @@ e_byzantium = {
 	    government = administrative_government
 	}
 	20.1.1 = {
-		change_development_level = 6
+		change_prosperity_level = 6
 	}
 	866.1.1 = {
 		succession_laws = {
@@ -4171,7 +4171,7 @@ e_byzantium = {
 		}
 	}
 	1000.1.1 = {
-		change_development_level = 10
+		change_prosperity_level = 10
 	}
 	1054.7.16 = {
 		effect = {
@@ -4185,7 +4185,7 @@ e_byzantium = {
 		}
 	}
 	1100.1.1 = {
-		change_development_level = 18
+		change_prosperity_level = 18
 	}
 	3.1.27 = {
 		holder = 145290
@@ -4674,60 +4674,60 @@ e_byzantium = {
 
 e_italy = {
 	20.1.1 = {
-		change_development_level = 6
+		change_prosperity_level = 6
 	}
 
 	1000.1.1 = {
-		change_development_level = 9
+		change_prosperity_level = 9
 	}
 
 	1100.1.1 = {
-		change_development_level = 17
+		change_prosperity_level = 17
 	}
 }
 
 
 #e_scandinavia = {
 #	20.1.1 = {
-#		change_development_level = 2
+#		change_prosperity_level = 2
 #	}
 #
 #	1000.1.1 = {
-#		change_development_level = 4
+#		change_prosperity_level = 4
 #	}
 #
 #	1100.1.1 = {
-#		change_development_level = 12
+#		change_prosperity_level = 12
 #	}
 #}
 
 
 e_wendish_empire = {
 	20.1.1 = {
-		change_development_level = 2
+		change_prosperity_level = 2
 	}
 
 	1000.1.1 = {
-		change_development_level = 5
+		change_prosperity_level = 5
 	}
 
 	1100.1.1 = {
-		change_development_level = 12
+		change_prosperity_level = 12
 	}
 }
 
 
 e_russia = {
 	20.1.1 = {
-		change_development_level = 0
+		change_prosperity_level = 0
 	}
 
 	1000.1.1 = {
-		change_development_level = 4
+		change_prosperity_level = 4
 	}
 
 	1100.1.1 = {
-		change_development_level = 8
+		change_prosperity_level = 8
 	}
 }
 
@@ -5007,30 +5007,30 @@ e_persia = {
 
 e_carpathia = {
 	20.1.1 = {
-		change_development_level = 2
+		change_prosperity_level = 2
 	}
 
 	1000.1.1 = {
-		change_development_level = 5
+		change_prosperity_level = 5
 	}
 
 	1100.1.1 = {
-		change_development_level = 12
+		change_prosperity_level = 12
 	}
 }
 
 
 e_france = {
 	20.1.1 = {
-		change_development_level = 4
+		change_prosperity_level = 4
 	}
 
 	1000.1.1 = {
-		change_development_level = 8
+		change_prosperity_level = 8
 	}
 
 	1100.1.1 = {
-		change_development_level = 16
+		change_prosperity_level = 16
 	}
 
 	751.11.1 = {
@@ -5044,15 +5044,15 @@ e_france = {
 
 e_spain = {
 	20.1.1 = {
-		change_development_level = 3
+		change_prosperity_level = 3
 	}
 
 	1000.1.1 = {
-		change_development_level = 7
+		change_prosperity_level = 7
 	}
 
 	1100.1.1 = {
-		change_development_level = 14
+		change_prosperity_level = 14
 	}
 }
 
@@ -5226,30 +5226,30 @@ k_visigoths = {
 
 e_maghreb = {
 	20.1.1 = {
-		change_development_level = 2
+		change_prosperity_level = 2
 	}
 
 	1000.1.1 = {
-		change_development_level = 5
+		change_prosperity_level = 5
 	}
 
 	1100.1.1 = {
-		change_development_level = 12
+		change_prosperity_level = 12
 	}
 }
 
 
 e_arabia = {
 	20.1.1 = {
-		change_development_level = 2
+		change_prosperity_level = 2
 	}
 
 	1000.1.1 = {
-		change_development_level = 6
+		change_prosperity_level = 6
 	}
 
 	1100.1.1 = {
-		change_development_level = 13
+		change_prosperity_level = 13
 	}
 
 	661.2.28 = {
@@ -5374,30 +5374,30 @@ e_arabia = {
 
 e_abyssinia = {
 	20.1.1 = {
-		change_development_level = 2
+		change_prosperity_level = 2
 	}
 
 	1000.1.1 = {
-		change_development_level = 6
+		change_prosperity_level = 6
 	}
 
 	1100.1.1 = {
-		change_development_level = 13
+		change_prosperity_level = 13
 	}
 }
 
 
 e_mali = {
 	20.1.1 = {
-		change_development_level = 0
+		change_prosperity_level = 0
 	}
 
 	1000.1.1 = {
-		change_development_level = 3
+		change_prosperity_level = 3
 	}
 
 	1100.1.1 = {
-		change_development_level = 6
+		change_prosperity_level = 6
 	}
 }
 
@@ -5410,15 +5410,15 @@ h_india = {
 
 e_rajastan = {
 	20.1.1 = {
-		change_development_level = 3
+		change_prosperity_level = 3
 	}
 
 	1000.1.1 = {
-		change_development_level = 7
+		change_prosperity_level = 7
 	}
 
 	1100.1.1 = {
-		change_development_level = 14
+		change_prosperity_level = 14
 	}
 
 	733.8.14 = {
@@ -5503,15 +5503,15 @@ e_rajastan = {
 
 e_deccan = {
 	20.1.1 = {
-		change_development_level = 4
+		change_prosperity_level = 4
 	}
 
 	1000.1.1 = {
-		change_development_level = 8
+		change_prosperity_level = 8
 	}
 
 	1100.1.1 = {
-		change_development_level = 16
+		change_prosperity_level = 16
 	}
 	1337.1.1 = {
 		holder = 74401
@@ -5521,15 +5521,15 @@ e_deccan = {
 
 e_tibet = {
 	21.1.1 = {
-		change_development_level = 1
+		change_prosperity_level = 1
 	}
 
 	1001.1.1 = {
-		change_development_level = 3
+		change_prosperity_level = 3
 	}
 
 	1101.1.1 = {
-		change_development_level = 6
+		change_prosperity_level = 6
 	}
 	619.1.1={
 		holder = 247075
@@ -6020,13 +6020,13 @@ k_rum = {
 
 e_bengal = {
 	20.1.1 = {
-		change_development_level = 2
+		change_prosperity_level = 2
 	}
 	1000.1.1 = {
-		change_development_level = 5
+		change_prosperity_level = 5
 	}
 	1100.1.1 = {
-		change_development_level = 12
+		change_prosperity_level = 12
 	}
 
 	320.1.1 = {

@@ -1,7 +1,7 @@
 ﻿k_east_francia = {
-	867.1.1 = { change_development_level = 5 }
-	1066.1.1 = { change_development_level = 8 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 5 }
+	1066.1.1 = { change_prosperity_level = 8 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	769.1.1 = {
 		name = EAST_FRANCIA
@@ -122,9 +122,9 @@
 
 
 d_west_franconia = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 11 }
-	1178.1.1 = { change_development_level = 15 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 11 }
+	1178.1.1 = { change_prosperity_level = 15 }
 	
 	100.1.1 = {
 		liege = k_east_francia
@@ -195,9 +195,9 @@ d_west_franconia = {
 
 
 c_mainz = {
-	867.1.1 = { change_development_level = 10 }
-	1066.1.1 = { change_development_level = 16 }
-	1178.1.1 = { change_development_level = 29 }
+	867.1.1 = { change_prosperity_level = 10 }
+	1066.1.1 = { change_prosperity_level = 16 }
+	1178.1.1 = { change_prosperity_level = 29 }
 	
 	745.1.1 = {
 		liege = k_france
@@ -643,9 +643,9 @@ c_erbach = {
 
 
 c_worms = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 12 }
-	1178.1.1 = { change_development_level = 30 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 12 }
+	1178.1.1 = { change_prosperity_level = 30 }
 	
 	598.1.1 = {
 		liege = d_west_franconia
@@ -762,9 +762,9 @@ c_worms = {
 
 
 c_speyer = {
-	867.1.1 = { change_development_level = 9 }
-	1066.1.1 = { change_development_level = 13 }
-	1178.1.1 = { change_development_level = 31 }
+	867.1.1 = { change_prosperity_level = 9 }
+	1066.1.1 = { change_prosperity_level = 13 }
+	1178.1.1 = { change_prosperity_level = 31 }
 	
 	598.1.1 = {
 		liege = d_west_franconia
@@ -3981,9 +3981,9 @@ c_lippe = {
 
 
 c_bremen = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 9 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 9 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	761.1.1 = {
 		liege = d_holstein
@@ -4367,9 +4367,9 @@ c_oldenburg = {
 
 
 d_anhalt = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 9 }
-	1178.1.1 = { change_development_level = 13 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 9 }
+	1178.1.1 = { change_prosperity_level = 13 }
 	
 	867.1.1 = {
 		#de_jure_liege = k_east_francia
@@ -4500,9 +4500,9 @@ c_halberstadt = {
 
 
 c_magdeburg = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 12 }
-	1178.1.1 = { change_development_level = 14 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 12 }
+	1178.1.1 = { change_prosperity_level = 14 }
 	
 	867.1.1 = {
 		holder = 144957	#Count Bruno Ludolfinger
@@ -4724,9 +4724,9 @@ c_mansfeld = {
 
 
 c_mersenburg = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 12 }
-	1178.1.1 = { change_development_level = 14 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 12 }
+	1178.1.1 = { change_prosperity_level = 14 }
 	
 	761.1.1 = {
 		holder = 190457 #Bruno
@@ -4786,9 +4786,9 @@ c_mersenburg = {
 
 
 d_lausitz = {
-	867.1.1 = { change_development_level = 4 }
-	1066.1.1 = { change_development_level = 8 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 4 }
+	1066.1.1 = { change_prosperity_level = 8 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	500.1.1 = {
 		holder = 0
@@ -5279,9 +5279,9 @@ c_naumberg = {	#Lubsko
 
 
 d_meissen = {
-	867.1.1 = { change_development_level = 4 }
-	1066.1.1 = { change_development_level = 8 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 4 }
+	1066.1.1 = { change_prosperity_level = 8 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	857.1.1 = {
 		holder = 184007 #Duke Radomil
@@ -5453,9 +5453,9 @@ c_meissen = {
 
 
 c_dresden = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 9 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 9 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	720.1.1 = {
 		liege = "d_bohemia"
@@ -6042,9 +6042,9 @@ d_ostfalen = {
 
 
 c_luneburg = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 9 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 9 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	740.1.1 = {
 		holder = 190455 #Theoderic
@@ -6121,7 +6121,7 @@ c_luneburg = {
 
 
 c_brunswick = {
-	1178.1.1 = { change_development_level = 11 }
+	1178.1.1 = { change_prosperity_level = 11 }
 
 	761.1.1 = {
 		holder = 190457 #Bruno
@@ -6201,9 +6201,9 @@ c_brunswick = {
 
 
 c_hamburg = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 12 }
-	1178.1.1 = { change_development_level = 14 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 12 }
+	1178.1.1 = { change_prosperity_level = 14 }
 	
 	740.1.1 = {
 		holder = 190455 #Theoderic
@@ -6277,9 +6277,9 @@ c_hamburg = {
 
 
 c_dannenberg = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 9 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 9 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	740.1.1 = {
 		holder = 190455 #Theoderic
@@ -6348,9 +6348,9 @@ c_dannenberg = {
 
 
 c_stendal = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 9 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 9 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	740.1.1 = {
 		holder = 190455 #Theoderic

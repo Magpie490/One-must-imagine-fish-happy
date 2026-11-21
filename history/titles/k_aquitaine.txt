@@ -1,7 +1,7 @@
 ﻿k_aquitaine = {
-	867.1.1 = { change_development_level = 5 }
-	1066.1.1 = { change_development_level = 8 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 5 }
+	1066.1.1 = { change_prosperity_level = 8 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	778.1.1 = {
 		holder = 6392
@@ -166,9 +166,9 @@ d_gascogne = {	#AKA Vasconia
 }
 
 c_bordeaux = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 15 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 15 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	760.1.1 = {
 		holder = 190499 #Guillaume
@@ -277,9 +277,9 @@ c_bordeaux = {
 }
 
 c_labourd = {
-	867.1.1 = { change_development_level = 9 }
-	1066.1.1 = { change_development_level = 12 }
-	1178.1.1 = { change_development_level = 14 }
+	867.1.1 = { change_prosperity_level = 9 }
+	1066.1.1 = { change_prosperity_level = 12 }
+	1178.1.1 = { change_prosperity_level = 14 }
 	
 	735.1.1 = {
 		holder = 190483 #Hatto
@@ -679,9 +679,9 @@ c_agenais = {
 
 
 d_aquitaine = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 9 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 9 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	678.1.1 = {
 		holder = 190478 #Boggis
@@ -1371,9 +1371,9 @@ d_toulouse = {
 }
 
 c_toulouse = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 10 }
-	1178.1.1 = { change_development_level = 27 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 10 }
+	1178.1.1 = { change_prosperity_level = 27 }
 	
 	769.1.1 = {
 		holder = 190514 #Guillaume
@@ -1810,7 +1810,7 @@ c_uses = {
 }
 
 c_montpellier = {
-	1178.1.1 = { change_development_level = 23 }
+	1178.1.1 = { change_prosperity_level = 23 }
 
 	865.1.1 = {
 		# Bernard of Gothia is moved to Gothia & Septimania.
@@ -1857,9 +1857,9 @@ c_montpellier = {
 }
 
 c_carcassonne = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 10 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 10 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	740.1.1 = {
 		liege = "k_lotharingia"
@@ -1960,7 +1960,7 @@ c_carcassonne = {
 }
 
 c_beziers = {
-	1178.1.1 = { change_development_level = 24 }
+	1178.1.1 = { change_prosperity_level = 24 }
 
 	865.1.1 = {
 		# Bernard of Gothia is moved to Gothia & Septimania.
@@ -3327,9 +3327,9 @@ d_poitou = {
 }
 
 c_poitiers = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 10 }
-	1178.1.1 = { change_development_level = 11 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 10 }
+	1178.1.1 = { change_prosperity_level = 11 }
 	
 	768.1.1 = {
 		holder = 190510 #Abbon

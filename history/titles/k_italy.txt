@@ -8,9 +8,9 @@ e_titular_frankia = {
 	}
 }
 k_italy = {
-	867.1.1 = { change_development_level = 5 }
-	1066.1.1 = { change_development_level = 8 }
-	1178.1.1 = { change_development_level = 24 }
+	867.1.1 = { change_prosperity_level = 5 }
+	1066.1.1 = { change_prosperity_level = 8 }
+	1178.1.1 = { change_prosperity_level = 24 }
 	
 	565.1.1 = {
 		holder = 190124 # Alboin Gausi
@@ -722,9 +722,9 @@ d_verona = {
 
 
 c_verona = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 11 }
-	1178.1.1 = { change_development_level = 29 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 11 }
+	1178.1.1 = { change_prosperity_level = 29 }
 	
 	751.1.1 = {
 		liege = k_italy
@@ -948,7 +948,7 @@ c_treviso = {
 }
 
 c_padua = {
-	1178.1.1 = { change_development_level = 24 }
+	1178.1.1 = { change_prosperity_level = 24 }
 
 	569.1.1 = {
 		holder = 190126 #Gisulf I
@@ -1726,9 +1726,9 @@ c_cuneo = {
 }
 
 d_lombardia = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 12 }
-	1178.1.1 = { change_development_level = 17 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 12 }
+	1178.1.1 = { change_prosperity_level = 17 }
 
 	940.1.1 = {
 		holder = 261385 # Adalberto I Bonifazi'il Margravio'
@@ -1810,9 +1810,9 @@ d_lombardia = {
 
 
 c_lombardia = {
-	867.1.1 = { change_development_level = 13 }
-	1066.1.1 = { change_development_level = 20 }
-	1178.1.1 = { change_development_level = 39 }
+	867.1.1 = { change_prosperity_level = 13 }
+	1066.1.1 = { change_prosperity_level = 20 }
+	1178.1.1 = { change_prosperity_level = 39 }
 	
 	766.1.1 = {
 		liege = k_italy
@@ -2363,9 +2363,9 @@ c_trent = {
 
 
 c_pavia = {
-	867.1.1 = { change_development_level = 10 }
-	1066.1.1 = { change_development_level = 15 }
-	1178.1.1 = { change_development_level = 16 }
+	867.1.1 = { change_prosperity_level = 10 }
+	1066.1.1 = { change_prosperity_level = 15 }
+	1178.1.1 = { change_prosperity_level = 16 }
 	
 	565.1.1 = {
 		holder = 190124 # Alboin  of Italy
@@ -2623,7 +2623,7 @@ c_pavia = {
 
 
 c_cremona = {
-	1178.1.1 = { change_development_level = 13 }
+	1178.1.1 = { change_prosperity_level = 13 }
 
 	590.9.5 = {
 		holder = 190170 # Agilolf of Italy
@@ -3198,15 +3198,15 @@ c_tortona = {
 }
 
 d_genoa = {
-	867.1.1 = { change_development_level = 6 }
-	1066.1.1 = { change_development_level = 9 }
-	1178.1.1 = { change_development_level = 13 }
+	867.1.1 = { change_prosperity_level = 6 }
+	1066.1.1 = { change_prosperity_level = 9 }
+	1178.1.1 = { change_prosperity_level = 13 }
 }
 
 c_genoa = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 12 }
-	1178.1.1 = { change_development_level = 31 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 12 }
+	1178.1.1 = { change_prosperity_level = 31 }
 	
 	741.1.1 = {
 		liege = k_italy
@@ -3520,7 +3520,7 @@ c_luni = {
 }
 
 c_modena = {
-	1178.1.1 = { change_development_level = 21 }
+	1178.1.1 = { change_prosperity_level = 21 }
 
 	761.1.1 = {
 		liege = k_italy
@@ -3912,9 +3912,9 @@ d_pisa = {
 
 
 c_pisa = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 11 }
-	1178.1.1 = { change_development_level = 31 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 11 }
+	1178.1.1 = { change_prosperity_level = 31 }
 	
 	713.1.1 = {
 		liege = k_italy
@@ -4108,9 +4108,9 @@ b_piombino = {
 
 
 d_toscana = {
-	867.1.1 = { change_development_level = 8 }
-	1066.1.1 = { change_development_level = 11 }
-	1178.1.1 = { change_development_level = 15 }
+	867.1.1 = { change_prosperity_level = 8 }
+	1066.1.1 = { change_prosperity_level = 11 }
+	1178.1.1 = { change_prosperity_level = 15 }
 	
 	713.1.1 = {
 		liege = k_italy
@@ -4229,7 +4229,7 @@ d_toscana = {
 
 
 c_firenze = {
-	1178.1.1 = { change_development_level = 31 }
+	1178.1.1 = { change_prosperity_level = 31 }
 
 	565.1.1 = {
 		holder = 190124 #Alboin
@@ -4718,7 +4718,7 @@ c_arezzo = {
 
 
 c_siena = {
-	1178.1.1 = { change_development_level = 24 }
+	1178.1.1 = { change_prosperity_level = 24 }
 
 	765.1.1 = {
 		liege = k_italy

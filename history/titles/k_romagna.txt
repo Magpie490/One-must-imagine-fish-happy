@@ -1,7 +1,7 @@
 k_romagna = {
-	867.1.1 = { change_development_level = 7 }
-	1066.1.1 = { change_development_level = 10 }
-	1178.1.1 = { change_development_level = 14 }
+	867.1.1 = { change_prosperity_level = 7 }
+	1066.1.1 = { change_prosperity_level = 10 }
+	1178.1.1 = { change_prosperity_level = 14 }
 	
 	756.1.1 = {
 		holder = 7895
@@ -479,7 +479,7 @@ c_ravenna = {
 
 
 c_bologna = {
-	1178.1.1 = { change_development_level = 32 }
+	1178.1.1 = { change_prosperity_level = 32 }
 
 	750.1.1 = {
 		liege = k_italy
@@ -586,7 +586,7 @@ c_bologna = {
 
 
 c_ferrara = {
-	1178.1.1 = { change_development_level = 14 }
+	1178.1.1 = { change_prosperity_level = 14 }
 
 	747.1.1 = {
 		liege = k_italy
@@ -2030,15 +2030,15 @@ c_abruzzi = {
 }
 
 d_latium = {
-	867.1.1 = { change_development_level = 10 }
-	1066.1.1 = { change_development_level = 14 }
-	1178.1.1 = { change_development_level = 19 }
+	867.1.1 = { change_prosperity_level = 10 }
+	1066.1.1 = { change_prosperity_level = 14 }
+	1178.1.1 = { change_prosperity_level = 19 }
 }
 
 c_roma = {
-	867.1.1 = { change_development_level = 25 }
-	1066.1.1 = { change_development_level = 30 }
-	1178.1.1 = { change_development_level = 34 }
+	867.1.1 = { change_prosperity_level = 25 }
+	1066.1.1 = { change_prosperity_level = 30 }
+	1178.1.1 = { change_prosperity_level = 34 }
 	
 	42.1.2 = {
 		holder = 145292
