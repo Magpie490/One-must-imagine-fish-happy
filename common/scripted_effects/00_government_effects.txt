@@ -145,6 +145,7 @@ assign_new_government_effect = {
 			}
 		}
 	}
+	## Administrative govs
 	else_if = {
 		limit = {
 			OR = {
