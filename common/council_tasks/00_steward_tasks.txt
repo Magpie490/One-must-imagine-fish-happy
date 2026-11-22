@@ -13,7 +13,14 @@
 	}
 
 	effect_desc = {
-		desc = task_collect_taxes_effect_desc
+		triggered_desc = {
+			desc = task_collect_taxes_effect_desc
+			trigger = { liege = { is_landed = yes } }
+		}
+		triggered_desc = {
+			desc = task_collect_taxes_domicile_effect_desc
+			trigger = { liege = { has_domicile = yes } }
+		}
 		triggered_desc = {
 			trigger = { liege = { has_perk = tax_man_perk } }
 			desc = task_collect_taxes_tax_man_bonus_desc
@@ -69,6 +76,7 @@
 	council_owner_modifier = {
 		name = task_collect_taxes_modifier
 		domain_tax_mult = 1
+		domicile_monthly_gold_mult = 1
 		scale = steward_collect_taxes_total_scale
 	}
 
@@ -141,14 +149,15 @@ task_develop_county = {
 	task_max_value = 100
 	highlight_own_realm = yes
 
-	asset = {
-		icon = "gfx/interface/icons/council_task_types/task_develop_county.dds"
-		background = "gfx/interface/buttons/button_round_bg.dds"
-		frame = "gfx/interface/buttons/button_round_frame.dds"
-		glow = "gfx/particles/halo.dds"
-	}
-	
 	is_shown = {
+		scope:councillor_liege = {
+			trigger_if = {
+				limit = {
+					government_has_flag = government_is_republic
+				}
+				is_landed = yes
+			}
+		}
 		trigger_if = {
 			limit = {
 				scope:councillor_liege = { tgp_has_access_to_ministry_trigger = yes }
@@ -157,7 +166,18 @@ task_develop_county = {
 		}
 	}
 
+	asset = {
+		icon = "gfx/interface/icons/council_task_types/task_increase_prosperity_county.dds"
+		background = "gfx/interface/buttons/button_round_bg.dds"
+		frame = "gfx/interface/buttons/button_round_frame.dds"
+		glow = "gfx/particles/halo.dds"
+	}
+
 	effect_desc = {
+		triggered_desc = {
+			trigger = { council_task_not_started_in_county_trigger = yes }
+			desc = task_develop_county_current_status
+		}
 		desc = task_develop_county_complete_effect_desc
 		desc = task_develop_county_effect_desc
 		desc = {
@@ -182,7 +202,7 @@ task_develop_county = {
 					trigger_if = {
 						limit = { exists = scope:county }
 						scope:county = {
-							county_control < full_county_control
+							county_control < county_control_baseline
 						}
 					}
 				}
@@ -340,10 +360,22 @@ task_develop_county = {
 				desc = COUNCILLOR_IS_YOUR_NEMESIS
 			}
 		}
+		if = {
+			limit = {
+				exists = scope:county
+				scope:county.title_province = {
+					has_building_or_higher = manor_chamber_blocks_1
+				}
+			}
+			add = {
+				value = scope:councillor.manor_chamber_blocks_steward_develop_county_bonus
+				desc = MANOR_CHAMBER_BLOCKS_STEWARD_PROSPERITY_BONUS
+			}
+		}
 		if = { #Tribal penalty
 			limit = {
 				scope:councillor_liege = {
-					should_apply_tribal_development_penalty_trigger = yes	
+					should_apply_tribal_prosperity_penalty_trigger = yes	
 				}
 			}
 			add = {
@@ -351,23 +383,23 @@ task_develop_county = {
 				desc = DEVELOP_COUNTY_TRIBAL_PENALTY_VALUE
 			}
 		}	
-		if = { # Development reduces the speed.
+		if = { # Prosperity reduces the speed.
 			limit = {
 				exists = scope:county
 				scope:county = {
-					development_level > 0
+					prosperity_level > 0
 				}
 			}
 			add = {
-				value = scope:county.current_development_penalty
-				desc = STEWARD_CURRENT_DEVELOPMENT_PENALTY
+				value = scope:county.current_prosperity_penalty
+				desc = STEWARD_CURRENT_PROSPERITY_PENALTY
 			}
 		}
 		
 		if = {
 			limit = { exists = scope:county }
 			multiply = {
-				value = scope:county.development_rate_modifier
+				value = scope:county.prosperity_rate_modifier
 				desc = STEWARD_COUNTY_SPEED_MODIFIERS
 			}
 		}
@@ -406,7 +438,7 @@ task_develop_county = {
 	potential_county = {
 		scope:county = {
 			is_landless_type_title = no
-			development_level < max_development_level
+			prosperity_level < max_prosperity_level
 			trigger_if = {
 				limit = {
 					scope:councillor_liege = {
@@ -429,7 +461,7 @@ task_develop_county = {
 				}
 				OR = {
 					scope:councillor_liege = {
-						has_character_flag = vassal_directive_improve_development
+						has_character_flag = vassal_directive_improve_prosperity
 						vassal_is_valid_and_follows_directive_trigger = { VASSAL = this LIEGE = liege }
 					}
 					culture = scope:councillor_liege.culture
@@ -452,29 +484,37 @@ task_develop_county = {
 
 	county_modifier = {
 		name = steward_develop_county_modifier
-		development_growth = 100
+		prosperity_growth = 100
 		holding_build_speed = -7
 		#holding_build_gold_cost = -1
 		build_speed = -7
+		district_build_speed = -7
 		#build_gold_cost = -1
 		scale = { value = steward_develop_county_total divide = 100 }
 	}
 
 	county_modifier = {
-		name = steward_develop_county_current_development_modifier
-		development_growth = 100
-		scale = { value = scope:councillor.current_development_penalty divide = 100 }
+		name = steward_develop_county_current_prosperity_modifier
+		prosperity_growth = 100
+		scale = {
+			value = 0
+			if = {
+				limit = { scope:county ?= { prosperity_level > 0 } }
+				add = scope:councillor.current_prosperity_penalty
+				divide = 100
+			}
+		}
 	}
 
 	county_modifier = {
 		name = steward_develop_county_tribal_penalty_modifier
-		development_growth = 100
+		prosperity_growth = 100
 		scale = {
 			value = 0
 			if = {
 				limit = {
 					scope:councillor_liege = {
-						should_apply_tribal_development_penalty_trigger = yes
+						should_apply_tribal_prosperity_penalty_trigger = yes
 					}
 				}
 				value = scope:councillor.steward_develop_county_tribal_penalty
@@ -484,13 +524,13 @@ task_develop_county = {
 	}
 
 	on_start_task_county = {
-		# save current development_level for catalyst purpose
+		# save current prosperity_level for catalyst purpose
 		if = {
 			limit = { exists = scope:county }
 			scope:county = {
 				set_variable = {
-					name = current_development_level
-					value = development_level
+					name = current_prosperity_level
+					value = prosperity_level
 				}
 			}
 		}
@@ -503,7 +543,7 @@ task_develop_county = {
 					AND = {
 						exists = scope:county
 						scope:county = {
-							development_level = max_development_level
+							prosperity_level = max_prosperity_level
 						}
 					}
 					scope:councillor_liege = {
@@ -519,19 +559,19 @@ task_develop_county = {
 
 	on_monthly_county = {
 		scope:councillor_liege = {
-			# Check development level progress
+			# Check prosperity level progress
 			if = {
 				limit = {
 					exists = scope:county
-					exists = scope:county.var:current_development_level
 					scope:county = {
-						floored_development_value > floored_current_development_value
+						has_variable = current_prosperity_level
+						prosperity_level > var:current_prosperity_level
 					}
 				}
 				scope:county = {
 					set_variable = {
-						name = current_development_level
-						value = development_level
+						name = current_prosperity_level
+						value = prosperity_level
 					}
 				}
 				
@@ -540,73 +580,74 @@ task_develop_county = {
 						limit = {
 							exists = primary_title
 							primary_title.tier >= tier_kingdom
+							NOT = {
+								has_focus = stewardship_domain_focus
+							}
 							any_sub_realm_county = {
 								culture = {
 									cultural_acceptance = { target = scope:councillor_liege.culture value < 52 }
 								}
 							}
-							NOT = {
-								has_focus = stewardship_domain_focus
-							}
 						}
 						add_character_flag = {
-							flag = no_ai_increase_development
+							flag = no_ai_increase_prosperity
 							years = 15
 						}
 					}
 					else = {
 						add_character_flag = {
-							flag = no_ai_increase_development
+							flag = no_ai_increase_prosperity
 							years = 5
 						}
 					}
 				}
 				
 				# Struggle Catalyst
-#				if = {
-#					limit = {
-#						exists = scope:county
-#						# target someone from diff faith or culture
-#						scope:county = {
-#							NAND = {
-#								faith = scope:councillor_liege.faith
-#								culture = scope:councillor_liege.culture
-#							}
-#						}
-#
-#						any_character_struggle = {
-#							involvement = involved
-#							phase_has_catalyst = catalyst_improve_development_vassal_diff_faith_culture
-#						}
-#					}
-#					scope:councillor_liege = {
-#						every_character_struggle = {
-#							involvement = involved
-#							activate_struggle_catalyst = {
-#								catalyst = catalyst_improve_development_vassal_diff_faith_culture
-#								character = scope:councillor_liege
-#							}
-#						}
-#					}
-#					# Struggle Parameter
-#					if = {
-#						limit = {
-#							scope:county.culture != scope:councillor_liege.culture
-#							any_character_struggle = {
-#								involvement = involved
-#								has_struggle_phase_parameter = gain_acceptance_when_developing_other_culture_county
-#							}
-#						}
-#						scope:county.culture = {
-#							save_scope_as = current_culture
-#							change_cultural_acceptance = {
-#								target = scope:councillor_liege.culture
-#								value =	miniscule_cultural_acceptance_value
-#								desc = cultural_acceptance_gain_from_phase_effects
-#							}
-#						}
-#					}
-#				}
+				if = {
+					limit = {
+						exists = scope:county
+						# target someone from diff faith or culture
+						scope:county = {
+							NAND = {
+								faith = scope:councillor_liege.faith
+								culture = scope:councillor_liege.culture
+							}
+						}
+
+						any_character_struggle = {
+							involvement = involved
+							phase_has_catalyst = catalyst_improve_prosperity_vassal_diff_faith_culture
+						}
+					}
+					scope:councillor_liege = {
+						every_character_struggle = {
+							involvement = involved
+							activate_struggle_catalyst = {
+								catalyst = catalyst_improve_prosperity_vassal_diff_faith_culture
+								character = scope:councillor_liege
+							}
+						}
+					}
+					# Struggle Parameter
+					if = {
+						limit = {
+							scope:county.culture != scope:councillor_liege.culture
+							any_character_struggle = {
+								involvement = involved
+								has_struggle_phase_parameter = gain_acceptance_when_developing_other_culture_county
+							}
+						}
+						scope:county.culture = {
+							save_scope_as = current_culture
+							change_cultural_acceptance = {
+								target = scope:councillor_liege.culture
+								value =	miniscule_cultural_acceptance_value
+								desc = cultural_acceptance_gain_from_phase_effects
+							}
+						}
+					}
+
+				}
 			}
 			else_if = { # fallback for previous save: the effect would trigger a month later
 				limit = {
@@ -614,8 +655,8 @@ task_develop_county = {
 				}
 				scope:county = {
 					set_variable = {
-						name = current_development_level
-						value = development_level
+						name = current_prosperity_level
+						value = prosperity_level
 					}
 				}
 			}
@@ -635,13 +676,13 @@ task_develop_county = {
 		if = {
 			# Don't do this too often
 			limit = {
-				scope:councillor_liege = { has_character_flag = no_ai_increase_development }
+				scope:councillor_liege = { has_character_flag = no_ai_increase_prosperity }
 			}
 			multiply = 0
 		}
 		else_if = {
 			limit = {
-				scope:councillor_liege.gold >= steward_increase_development_value
+				scope:councillor_liege.gold >= steward_increase_prosperity_value
 			}
 			add = 300
 		}
@@ -656,12 +697,340 @@ task_develop_county = {
 		if = {
 			limit = {
 				scope:councillor_liege = {
-					has_character_flag = vassal_directive_improve_development
+					has_character_flag = vassal_directive_improve_prosperity
 					vassal_is_valid_and_follows_directive_trigger = { VASSAL = this LIEGE = liege }
 				}
 			}
 			add = 50000
 		}
+	}
+}
+
+task_republic_trade_logistics = {
+	position = councillor_steward
+	task_type = task_type_general
+	task_progress = task_progress_infinite
+
+	is_shown = {
+		scope:councillor_liege = {
+			government_has_flag = government_is_republic
+		}
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/council_task_types/task_trade_logistics.dds"
+		background = "gfx/interface/buttons/button_round_bg.dds"
+		frame = "gfx/interface/buttons/button_round_frame.dds"
+		glow = "gfx/particles/halo.dds"
+	}
+
+	effect_desc = {
+		# Trade Capacity
+		desc = task_republic_trade_logistics_capacity_desc
+		triggered_desc = {
+			trigger = {
+				scope:councillor_liege.house ?= {
+					OR = {
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_1
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_2
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_3
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_4
+					}
+				}
+			}
+			desc = ambition_improved_task_logistics_capacity_bonus
+		}
+		# Trade Goods Expertise
+		desc = task_republic_trade_logistics_expertise_desc
+		triggered_desc = {
+			trigger = {
+				scope:councillor_liege.house ?= {
+					OR = {
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_1
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_2
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_3
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_4
+					}
+				}
+			}
+			desc = ambition_improved_task_logistics_expertise_bonus
+		}
+		# Side effects
+		desc = {
+			desc = council_task_possible_side_effects
+			triggered_desc = {
+				trigger = { stewardship > mediocre_skill_rating }
+				desc = task_republic_trade_logistics_clearer_ledgers
+			}
+			triggered_desc = {
+				trigger = {
+					stewardship > mediocre_skill_rating
+					NOT = { has_character_modifier = republic_reliable_caravans_modifier }
+				}
+				desc = task_republic_trade_logistics_reliable_caravans
+			}
+			triggered_desc = {
+				trigger = {
+					stewardship < high_skill_rating
+					has_variable = republic_trade_logistics_value
+					var:republic_trade_logistics_value > 0
+				}
+				desc = task_republic_trade_logistics_bottlenecked_warehouses
+			}
+			triggered_desc = {
+				trigger = {
+					stewardship < high_skill_rating
+					short_term_gold > 0
+				}
+				desc = task_republic_trade_logistics_spoiled_cargo
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		tgp_natural_disaster_councillor_available_for_task_trigger = yes
+	}
+
+	on_start_task = {
+		liege = {
+			set_variable = {
+				name = republic_trade_logistics_value
+				value = 0
+			}
+		}
+	}
+
+	on_cancel_task = {
+		if = {
+			limit = {
+				is_alive = yes
+				has_variable = republic_trade_logistics_value
+			}
+			remove_variable = republic_trade_logistics_value
+		}
+	}
+
+	on_monthly = {
+		if = {
+			limit = { liege = { is_ai = no } }
+			if = {
+				limit = {
+					liege = {
+						has_variable = republic_trade_logistics_value
+					}
+				}
+				liege = {
+					if = {
+						limit = {
+							var:republic_trade_logistics_value < root.republic_trade_logistics_max_value
+						}
+						change_variable = {
+							name = republic_trade_logistics_value
+							add = root.republic_trade_logistics_monthly_increase
+						}
+					}
+					if = {
+						limit = {
+							var:republic_trade_logistics_value > root.republic_trade_logistics_max_value
+						}
+						set_variable = {
+							name = republic_trade_logistics_value
+							value = root.republic_trade_logistics_max_value
+						}
+					}
+				}
+			}
+			else = {
+				liege = {
+					set_variable = {
+						name = republic_trade_logistics_value
+						value = 0
+					}
+				}
+			}
+		}
+	}
+
+	council_owner_modifier = {
+		name = task_republic_trade_logistics_modifier
+		trade_capacity_mult = 0.01
+		scale = republic_trade_logistics_final_value
+	}
+
+	council_owner_modifier = {
+		name = task_republic_trade_logistics_modifier
+		trade_expertise_growth_mult = 0.01
+		scale = republic_trade_logistics_expertise_final_value
+	}
+
+	monthly_on_action = task_republic_trade_logistics_side_effects
+
+	ai_will_do = {
+		value = 0
+	}
+}
+
+task_republic_market_oversight = {
+	position = councillor_steward
+	task_type = task_type_general
+	task_progress = task_progress_infinite
+
+	is_shown = {
+		scope:councillor_liege = {
+			government_has_flag = government_is_republic
+		}
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/council_task_types/task_market_oversight.dds"
+		background = "gfx/interface/buttons/button_round_bg.dds"
+		frame = "gfx/interface/buttons/button_round_frame.dds"
+		glow = "gfx/particles/halo.dds"
+	}
+
+	effect_desc = {
+		# Competitiveness
+		desc = task_republic_market_oversight_competitiveness_desc
+		triggered_desc = {
+			trigger = {
+				scope:councillor_liege.house ?= {
+					OR = {
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_1
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_2
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_3
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_4
+					}
+				}
+			}
+			desc = ambition_improved_task_market_oversight_competitiveness_bonus
+		}
+		# Sell price
+		desc = task_republic_market_oversight_sell_price_desc
+		triggered_desc = {
+			trigger = {
+				scope:councillor_liege.house ?= {
+					OR = {
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_1
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_2
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_3
+						has_house_aspiration_parameter = ambition_improved_task_logistics_and_market_4
+					}
+				}
+			}
+			desc = ambition_improved_task_market_oversight_sell_price_bonus
+		}
+		# Side effects
+		desc = {
+			desc = council_task_possible_side_effects
+			triggered_desc = {
+				trigger = {
+					stewardship > mediocre_skill_rating
+					NOT = { has_character_modifier = republic_premium_contracts_modifier }
+				}
+				desc = task_republic_market_oversight_premium_contracts
+			}
+			triggered_desc = {
+				trigger = { stewardship > mediocre_skill_rating }
+				desc = task_republic_market_oversight_merchant_cooperation
+			}
+			triggered_desc = {
+				trigger = {
+					stewardship < high_skill_rating
+					has_variable = republic_market_oversight_value
+					var:republic_market_oversight_value > 0
+				}
+				desc = task_republic_market_oversight_market_scandal
+			}
+			triggered_desc = {
+				trigger = {
+					stewardship < high_skill_rating
+					NOT = { has_character_modifier = republic_inspector_bribery_modifier }
+				}
+				desc = task_republic_market_oversight_inspector_bribery
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		tgp_natural_disaster_councillor_available_for_task_trigger = yes
+	}
+
+	on_start_task = {
+		liege = {
+			set_variable = {
+				name = republic_market_oversight_value
+				value = 0
+			}
+		}
+	}
+
+	on_cancel_task = {
+		if = {
+			limit = {
+				is_alive = yes
+				has_variable = republic_market_oversight_value
+			}
+			remove_variable = republic_market_oversight_value
+		}
+	}
+
+	on_monthly = {
+		if = {
+			limit = { liege = { is_ai = no } }
+			if = {
+				limit = {
+					liege = {
+						has_variable = republic_market_oversight_value
+					}
+				}
+				liege = {
+					if = {
+						limit = {
+							var:republic_market_oversight_value < root.republic_market_oversight_max_value
+						}
+						change_variable = {
+							name = republic_market_oversight_value
+							add = root.republic_market_oversight_monthly_increase
+						}
+					}
+					if = {
+						limit = {
+							var:republic_market_oversight_value > root.republic_market_oversight_max_value
+						}
+						set_variable = {
+							name = republic_market_oversight_value
+							value = root.republic_market_oversight_max_value
+						}
+					}
+				}
+			}
+			else = {
+				liege = {
+					set_variable = {
+						name = republic_market_oversight_value
+						value = 0
+					}
+				}
+			}
+		}
+	}
+
+	council_owner_modifier = {
+		name = task_republic_market_oversight_modifier
+		trade_competitiveness_mult = 0.01
+		scale = republic_market_oversight_final_value
+	}
+
+	council_owner_modifier = {
+		name = task_republic_market_oversight_modifier
+		trade_category_all_sell_price_mult = 0.01
+		scale = republic_market_oversight_sell_price_final_value
+	}
+
+	monthly_on_action = task_republic_market_oversight_side_effects
+
+	ai_will_do = {
+		value = 0
 	}
 }
 
@@ -674,6 +1043,17 @@ task_promote_culture = {
 	task_progress = task_progress_percentage
 	restart_on_finish = yes
 	highlight_own_realm = yes
+
+	is_shown = {
+		scope:councillor_liege = {
+			trigger_if = {
+				limit = {
+					government_has_flag = government_is_republic
+				}
+				is_landed = yes
+			}
+		}
+	}
 
 	asset = {
 		icon = "gfx/interface/icons/council_task_types/task_promote_culture.dds"
@@ -689,7 +1069,7 @@ task_promote_culture = {
 				trigger = {
 					scope:councillor_liege = {
 						any_vassal = {
-							has_vassal_stance = minority
+							vassal_stance = minority
 						}
 					}
 				}
@@ -700,7 +1080,7 @@ task_promote_culture = {
 					trigger_if = {
 						limit = { exists = scope:county }
 						scope:county = {
-							NOT = { culture = scope:councillor_liege.culture }
+							culture != scope:councillor_liege.culture
 						}
 						NOT = {
 							scope:councillor_liege.culture = {
@@ -728,7 +1108,7 @@ task_promote_culture = {
 						}
 					}
 				}
-				desc = task_promote_culture_improve_county_opinion
+				desc = task_promote_culture_improve_popular_opinion
 			}
 			triggered_desc = {
 				trigger = {
@@ -798,81 +1178,16 @@ task_promote_culture = {
 
 		add = steward_promote_culture_contextual_bonuses
 		
-		if = { # Development reduces the speed. Should be the last non-multiply modifier applied to avoid negative values
+		if = { # Prosperity reduces the speed. Should be the last non-multiply modifier applied to avoid negative values
 			limit = {
 				exists = scope:county
 				scope:county = {
-					development_level > 0
+					prosperity_level > 0
 				}
 			}
 			add = {
-				value = scope:county.promote_culture_development_penalty
-				desc = STEWARD_PROMOTE_CULTURE_DEVELOPMENT_PENALTY
-			}
-		}
-		####
-		if = { # Development reduces the speed. Should be the last non-multiply modifier applied to avoid negative values
-			limit = {
-				exists = scope:county
-				scope:county = {
-					county_control <= 25
-					county_control >= 0
-				}
-			}
-			multiply = {
-				value = 0.4
-				desc = STEWARD_PROMOTE_CULTURE_LOW_CONTROL_PENALTY
-			}
-		}
-		if = { # Development reduces the speed. Should be the last non-multiply modifier applied to avoid negative values
-			limit = {
-				exists = scope:county
-				scope:county = {
-					county_control <= 50
-					county_control > 25
-				}
-			}
-			multiply = {
-				value = 0.5
-				desc = STEWARD_PROMOTE_CULTURE_MEDIUM_CONTROL_PENALTY
-			}
-		}
-		if = { # Development reduces the speed. Should be the last non-multiply modifier applied to avoid negative values
-			limit = {
-				exists = scope:county
-				scope:county = {
-					county_control <= 75
-					county_control > 50
-				}
-			}
-			multiply = {
-				value = 0.6
-				desc = STEWARD_PROMOTE_CULTURE_HIGH_CONTROL_PENALTY
-			}
-		}
-		if = { # Development reduces the speed. Should be the last non-multiply modifier applied to avoid negative values
-			limit = {
-				exists = scope:county
-				scope:county = {
-					county_control <= 100
-					county_control > 75
-				}
-			}
-			multiply = {
-				value = 1.1
-				desc = STEWARD_PROMOTE_CULTURE_HIGH_CONTROL_BONUS
-			}
-		}
-		if = { # Development reduces the speed. Should be the last non-multiply modifier applied to avoid negative values
-			limit = {
-				exists = scope:county
-				scope:county = {
-					county_control > 100
-				}
-			}
-			multiply = {
-				value = 1.5
-				desc = STEWARD_PROMOTE_CULTURE_ABSOLUTE_CONTROL_BONUS
+				value = scope:county.promote_culture_prosperity_penalty
+				desc = STEWARD_PROMOTE_CULTURE_PROSPERITY_PENALTY
 			}
 		}
 		#####
@@ -907,14 +1222,22 @@ task_promote_culture = {
 						terrain = hills
 						terrain = tells
 					}
-				}
 			}
 			multiply = {
 				value = 0.5
 				desc = STEWARD_PROMOTE_CULTURE_LOW_TERRAIN_PENALTY
 			}
 		}
-		
+		if = {
+			limit = { exists = scope:county.title_province }
+				value = 1
+				subtract = {
+					value = scope:county.title_province.province_size_level
+					multiply = promote_culture_settlement_size_penalty_step
+				}
+				desc = STEWARD_PROMOTE_CULTURE_SETTLEMENT_SIZE
+			}
+		}
 		# Conversion speed game rules
 		if = {
 			limit = {
@@ -953,25 +1276,25 @@ task_promote_culture = {
 			}
 		}
 		# Faster conversion for FP2 Hostility ending, if county is in Iberia and culture was involved
-#		if = {
-#			limit = {
-#				any_in_global_list = {
-#					variable = fp2_struggle_ending_culture_list
-#					this = scope:county.culture
-#				}
-#				scope:county.title_province = { geographical_region = world_europe_west_iberia }
-#				scope:councillor.liege.house = {
-#					OR = {
-#						has_house_modifier = fp2_struggle_hostility_house_culture_modifier
-#						has_house_modifier = fp2_struggle_hostility_house_combined_modifier
-#					}
-#				}
-#			}
-#			multiply = {
-#				value = fp2_struggle_hostility_conversion_value
-#				desc = fp2_struggle_hostility_culture_conversion_task_desc
-#			}
-#		}
+		if = {
+			limit = {
+				any_in_global_list = {
+					variable = fp2_struggle_ending_culture_list
+					this = scope:county.culture
+				}
+				scope:county.title_province = { geographical_region = world_europe_west_iberia }
+				scope:councillor.liege.house = {
+					OR = {
+						has_house_modifier = fp2_struggle_hostility_house_culture_modifier
+						has_house_modifier = fp2_struggle_hostility_house_combined_modifier
+					}
+				}
+			}
+			multiply = {
+				value = fp2_struggle_hostility_conversion_value
+				desc = fp2_struggle_hostility_culture_conversion_task_desc
+			}
+		}
 		if = {
 			limit = {
 				scope:councillor_liege = {
@@ -983,18 +1306,18 @@ task_promote_culture = {
 				desc = bp2_devoted_to_tradition_modifier_conversion_task_desc
 			}
 		}
-#		if = {
-#			limit = {
-#				scope:councillor_liege = {
-#					has_title = title:c_byzantion
-#					title:c_byzantion = { has_county_modifier = pandidakterion_university_modifier }
-#				}
-#			}
-#			multiply = {
-#				value = 1.25
-#				desc = pandidakterion_university_modifier
-#			}
-#		}
+		if = {
+			limit = {
+				scope:councillor_liege = {
+					has_title = title:c_byzantion
+					title:c_byzantion = { has_county_modifier = pandidakterion_university_modifier }
+				}
+			}
+			multiply = {
+				value = 1.25
+				desc = pandidakterion_university_modifier
+			}
+		}
 		if = {
 			limit = {
 				scope:county = { has_county_modifier = improve_promote_culture_modifier }
@@ -1031,18 +1354,18 @@ task_promote_culture = {
 					}
 				}
 			}
-#			NAND = { # Princes in the HRE tend to not convert each other's cultures
-#				exists = title:e_hre.holder
-#				scope:councillor_liege.top_liege = title:e_hre.holder
-#				OR = {
-#					scope:councillor_liege.culture = culture:czech
-#					scope:councillor_liege.culture = { has_cultural_pillar = heritage_central_germanic }
-#				}
-#				OR = {
-#					scope:county.culture = culture:czech
-#					scope:county.culture = { has_cultural_pillar = heritage_central_germanic }
-#				}
-#			}
+			NAND = { # Princes in the HRE tend to not convert each other's cultures
+				exists = title:e_hre.holder
+				scope:councillor_liege.top_liege = title:e_hre.holder
+				OR = {
+					scope:councillor_liege.culture = culture:czech
+					scope:councillor_liege.culture = { has_cultural_pillar = heritage_central_germanic }
+				}
+				OR = {
+					scope:county.culture = culture:czech
+					scope:county.culture = { has_cultural_pillar = heritage_central_germanic }
+				}
+			}
 			NOT = { # Do not eliminate the Basques
 				scope:county.culture = {
 					this = culture:basque
@@ -1058,18 +1381,18 @@ task_promote_culture = {
 							cultural_acceptance = { target = scope:councillor_liege.culture value >= 50 }
 						}
 					}
-#					scope:county = {
-#						this = title:c_maragha
-#						culture = culture:turkish
-#					}
+					scope:county = {
+						this = title:c_maragha
+						culture = culture:turkish
+					}
 					culture = { # All AI's are motivated to spread new Hybrid/Divergent cultures
 						OR = {
 							is_hybrid_culture = yes
 							is_divergent_culture = yes
 						}
-#						NOT = { # Leave the Welsh alone!
-#							this = culture:anglo_saxon
-#						}
+						NOT = { # Leave the Welsh alone!
+							this = culture:anglo_saxon
+						}
 						any_parent_culture = {
 							this = scope:county.culture
 						}
@@ -1094,36 +1417,36 @@ task_promote_culture = {
 							}
 						}
 					}
-#					AND = {
-#						# Scottish rulers should convert counties of 'old' cultures to the new one.
-#						culture = culture:scottish
-#						OR = {
-#							scope:county.culture = culture:anglo_saxon
-#							scope:county.culture = culture:gaelic
-#							scope:county.culture = culture:cumbrian
-#							scope:county.culture = culture:pictish
-#						}
-#					}
-#					AND = {
-#						# English rulers should convert counties of 'old' cultures to the new one.
-#						culture = culture:english
-#						OR = {
-#							scope:county.culture = culture:anglo_saxon
-#							scope:county.culture = culture:norman
-#						}
-#					}
-#					AND = {
-#						# German rulers want to convert the polabians
-#						culture = { has_cultural_pillar = heritage_central_germanic }
-#						scope:county.culture = culture:polabian
-#						NOT = { scope:councillor_liege.primary_title = title:e_hre }
-#					}
-#
-#					AND = {
-#						# Japanese rulers should convert Emishi counties
-#						culture = culture:japanese
-#						scope:county.culture = culture:emishi
-#					}
+					AND = {
+						# Scottish rulers should convert counties of 'old' cultures to the new one.
+						culture = culture:scottish
+						OR = {
+							scope:county.culture = culture:anglo_saxon
+							scope:county.culture = culture:gaelic
+							scope:county.culture = culture:cumbrian
+							scope:county.culture = culture:pictish
+						}
+					}
+					AND = {
+						# English rulers should convert counties of 'old' cultures to the new one.
+						culture = culture:english
+						OR = {
+							scope:county.culture = culture:anglo_saxon
+							scope:county.culture = culture:norman
+						}
+					}
+					AND = {
+						# German rulers want to convert the polabians
+						culture = { has_cultural_pillar = heritage_central_germanic }
+						scope:county.culture = culture:polabian
+						NOT = { scope:councillor_liege.primary_title = title:e_hre }
+					}
+
+					AND = {
+						# Japanese rulers should convert Emishi counties
+						culture = culture:japanese
+						scope:county.culture = culture:emishi
+					}
 				}
 				OR = {
 					is_independent_ruler = yes
@@ -1167,35 +1490,35 @@ task_promote_culture = {
 							count < 35
 						}
 					}
-#					AND = {
-#						# Scottish rulers should convert counties of 'old' cultures to the new one.
-#						culture = culture:scottish
-#						OR = {
-#							scope:county.culture = culture:anglo_saxon
-#							scope:county.culture = culture:gaelic
-#							scope:county.culture = culture:cumbrian
-#							scope:county.culture = culture:pictish
-#						}
-#					}
-#					AND = {
-#						# English rulers should convert counties of 'old' cultures to the new one.
-#						culture = culture:english
-#						OR = {
-#							scope:county.culture = culture:anglo_saxon
-#							scope:county.culture = culture:norman
-#						}
-#					}
-#					AND = {
-#						# German rulers want to convert the polabians
-#						culture = { has_cultural_pillar = heritage_central_germanic }
-#						scope:county.culture = culture:polabian
-#						NOT = { scope:councillor_liege.primary_title = title:e_hre }
-#					}
-#					AND = {
-#						# Japanese rulers should convert Emishi counties
-#						culture = culture:japanese
-#						scope:county.culture = culture:emishi
-#					}
+					AND = {
+						# Scottish rulers should convert counties of 'old' cultures to the new one.
+						culture = culture:scottish
+						OR = {
+							scope:county.culture = culture:anglo_saxon
+							scope:county.culture = culture:gaelic
+							scope:county.culture = culture:cumbrian
+							scope:county.culture = culture:pictish
+						}
+					}
+					AND = {
+						# English rulers should convert counties of 'old' cultures to the new one.
+						culture = culture:english
+						OR = {
+							scope:county.culture = culture:anglo_saxon
+							scope:county.culture = culture:norman
+						}
+					}
+					AND = {
+						# German rulers want to convert the polabians
+						culture = { has_cultural_pillar = heritage_central_germanic }
+						scope:county.culture = culture:polabian
+						NOT = { scope:councillor_liege.primary_title = title:e_hre }
+					}
+					AND = {
+						# Japanese rulers should convert Emishi counties
+						culture = culture:japanese
+						scope:county.culture = culture:emishi
+					}
 				}
 			}
 			OR = {
@@ -1204,57 +1527,57 @@ task_promote_culture = {
 						culture = scope:councillor_liege.culture # The AI only wants to convert counties bordering their own culture
 					}
 				}
-#				AND = { # The English want to convert the Anglo Saxons and Cumbrians
-#					scope:councillor_liege.culture = culture:english
-#					OR = {
-#						scope:county.culture = culture:anglo_saxon
-#						scope:county.culture = culture:cumbrian
-#					}
-#				}
-#				AND = { # The Scots want to convert the Anglo Saxons, Cumbrians and Gaelic
-#					scope:councillor_liege.culture = culture:scottish
-#					OR = {
-#						scope:county.culture = culture:anglo_saxon
-#						scope:county.culture = culture:gaelic
-#						scope:county.culture = culture:cumbrian
-#						scope:county.culture = culture:pictish
-#					}
-#				}
-#				AND = { # The Gaels want to convert the Picts and Cumbrians
-#					scope:councillor_liege.culture = culture:gaelic
-#					OR = {
-#						scope:county.culture = culture:cumbrian
-#						scope:county.culture = culture:pictish
-#					}
-#				}
-#				AND = { # The modern scandinavians want to convert the Norse
-#					OR = {
-#						scope:councillor_liege.culture = culture:swedish
-#						scope:councillor_liege.culture = culture:danish
-#						scope:councillor_liege.culture = culture:norwegian
-#					}
-#					scope:county.culture = culture:norse
-#				}
-#				AND = { # The Portuguese should want to convert Suebi
-#					scope:councillor_liege.culture = culture:portuguese
-#					scope:county.culture = culture:suebi
-#				}
-#				AND = { # The Iberians want to convert Visigothic
-#					scope:councillor_liege.culture = { has_cultural_pillar = heritage_iberian }
-#					NOT = { scope:councillor_liege.culture = culture:portuguese }
-#					scope:county.culture = culture:visigothic
-#				}
-#				AND = {
-#					# German rulers want to convert the polabians
-#					scope:councillor_liege.culture = { has_cultural_pillar = heritage_central_germanic }
-#					scope:county.culture = culture:polabian
-#					NOT = { scope:councillor_liege.primary_title = title:e_hre }
-#				}
-#				AND = {
-#					# Japanese rulers should convert Emishi counties
-#					scope:councillor_liege.culture = culture:japanese
-#					scope:county.culture = culture:emishi
-#				}
+				AND = { # The English want to convert the Anglo Saxons and Cumbrians
+					scope:councillor_liege.culture = culture:english
+					OR = {
+						scope:county.culture = culture:anglo_saxon
+						scope:county.culture = culture:cumbrian
+					}
+				}
+				AND = { # The Scots want to convert the Anglo Saxons, Cumbrians and Gaelic
+					scope:councillor_liege.culture = culture:scottish
+					OR = {
+						scope:county.culture = culture:anglo_saxon
+						scope:county.culture = culture:gaelic
+						scope:county.culture = culture:cumbrian
+						scope:county.culture = culture:pictish
+					}
+				}
+				AND = { # The Gaels want to convert the Picts and Cumbrians
+					scope:councillor_liege.culture = culture:gaelic
+					OR = {
+						scope:county.culture = culture:cumbrian
+						scope:county.culture = culture:pictish
+					}
+				}
+				AND = { # The modern scandinavians want to convert the Norse
+					OR = {
+						scope:councillor_liege.culture = culture:swedish
+						scope:councillor_liege.culture = culture:danish
+						scope:councillor_liege.culture = culture:norwegian
+					}
+					scope:county.culture = culture:norse
+				}
+				AND = { # The Portuguese should want to convert Suebi
+					scope:councillor_liege.culture = culture:portuguese
+					scope:county.culture = culture:suebi
+				}
+				AND = { # The Iberians want to convert Visigothic
+					scope:councillor_liege.culture = { has_cultural_pillar = heritage_iberian }
+					NOT = { scope:councillor_liege.culture = culture:portuguese }
+					scope:county.culture = culture:visigothic
+				}
+				AND = {
+					# German rulers want to convert the polabians
+					scope:councillor_liege.culture = { has_cultural_pillar = heritage_central_germanic }
+					scope:county.culture = culture:polabian
+					NOT = { scope:councillor_liege.primary_title = title:e_hre }
+				}
+				AND = {
+					# Japanese rulers should convert Emishi counties
+					scope:councillor_liege.culture = culture:japanese
+					scope:county.culture = culture:emishi
+				}
 			}
 		}
 		trigger_else_if = { # But AI Directives should still try to look pretty
@@ -1362,30 +1685,30 @@ task_promote_culture = {
 					gold > 0
 					OR = {
 						gold >= steward_convert_culture_value
-#						AND = {
-#							culture = culture:scottish
-#							top_liege.primary_title = title:k_scotland
-#							capital_county.kingdom = title:k_scotland
-#						}
-#						AND = {
-#							culture = culture:english
-#							top_liege.primary_title = title:k_england
-#							capital_county.kingdom = title:k_england
-#						}
-#						AND = {
-#							culture = { has_cultural_pillar = heritage_central_germanic }
-#							top_liege.primary_title = title:e_hre
-#							OR = {
-#								capital_county.kingdom = title:k_sorbia
-#								capital_county.kingdom = title:k_east_francia
-#								capital_county.kingdom = title:k_saxony
-#								capital_county.kingdom = title:k_pomerania
-#							}
-#						}
-#						AND = {
-#							culture = culture:japanese
-#							capital_county.empire = title:e_japan
-#						}
+						AND = {
+							culture = culture:scottish
+							top_liege.primary_title = title:k_scotland
+							capital_county.kingdom = title:k_scotland
+						}
+						AND = {
+							culture = culture:english
+							top_liege.primary_title = title:k_england
+							capital_county.kingdom = title:k_england
+						}
+						AND = {
+							culture = { has_cultural_pillar = heritage_central_germanic }
+							top_liege.primary_title = title:e_hre
+							OR = {
+								capital_county.kingdom = title:k_sorbia
+								capital_county.kingdom = title:k_east_francia
+								capital_county.kingdom = title:k_saxony
+								capital_county.kingdom = title:k_pomerania
+							}
+						}
+						AND = {
+							culture = culture:japanese
+							capital_county.empire = title:e_japan
+						}
 						AND = {
 							culture = {
 								OR = {
@@ -1477,14 +1800,14 @@ task_promote_culture = {
 			limit = {
 				scope:councillor_liege = {
 					has_character_flag = no_ai_culture_convert
-#					NAND = { # ignore it if in Hostility with escalation
-#						has_character_flag = agenda_towards_escalation
-#						any_character_struggle = {
-#							involvement = involved
-#							is_struggle_type = iberian_struggle
-#							is_struggle_phase = struggle_iberia_phase_hostility
-#						}
-#					}
+					NAND = { # ignore it if in Hostility with escalation
+						has_character_flag = agenda_towards_escalation
+						any_character_struggle = {
+							involvement = involved
+							is_struggle_type = iberian_struggle
+							is_struggle_phase = struggle_iberia_phase_hostility
+						}
+					}
 				}
 			}
 			multiply = 0
@@ -1522,6 +1845,17 @@ task_accept_culture = {
 	ai_county_target = realm
 	highlight_own_realm = yes
 	task_progress = task_progress_infinite
+
+	is_shown = {
+		scope:councillor_liege = {
+			trigger_if = {
+				limit = {
+					government_has_flag = government_is_republic
+				}
+				is_landed = yes
+			}
+		}
+	}
 
 	asset = {
 		icon = "gfx/interface/icons/council_task_types/task_accept_culture.dds"
@@ -1619,13 +1953,13 @@ task_accept_culture = {
 					limit = { exists = scope:county }
 					scope:county = {
 						NOR = {
-							has_county_modifier = steward_accept_culture_reduced_development_spread_modifier
-							has_county_modifier = steward_accept_culture_increased_development_spread_modifier
+							has_county_modifier = steward_accept_culture_reduced_prosperity_spread_modifier
+							has_county_modifier = steward_accept_culture_increased_prosperity_spread_modifier
 						}
 					}
 				}
 			}
-			desc = task_accept_culture_reduced_development_growth
+			desc = task_accept_culture_reduced_prosperity_growth
 		}
 		triggered_desc = {
 			trigger = {
@@ -1634,13 +1968,13 @@ task_accept_culture = {
 					limit = { exists = scope:county }
 					scope:county = {
 						NOR = {
-							has_county_modifier = steward_accept_culture_reduced_development_spread_modifier
-							has_county_modifier = steward_accept_culture_increased_development_spread_modifier
+							has_county_modifier = steward_accept_culture_reduced_prosperity_spread_modifier
+							has_county_modifier = steward_accept_culture_increased_prosperity_spread_modifier
 						}
 					}
 				}
 			}
-			desc = task_accept_culture_increased_development_growth
+			desc = task_accept_culture_increased_prosperity_growth
 		}
 		triggered_desc = {
 			trigger = {
@@ -1815,35 +2149,35 @@ task_accept_culture = {
 				limit = {
 					scope:councillor_liege = { is_ai = yes }
 				}
-#				NAND = {
-#					# Scottish rulers should convert counties of 'old' cultures to the new one.
-#					scope:councillor_liege.culture = culture:scottish
-#					OR = {
-#						scope:county.culture = culture:anglo_saxon
-#						scope:county.culture = culture:gaelic
-#						scope:county.culture = culture:cumbrian
-#						scope:county.culture = culture:pictish
-#					}
-#				}
-#				NAND = {
-#					# English rulers should convert counties of 'old' cultures to the new one.
-#					scope:councillor_liege.culture = culture:english
-#					OR = {
-#						scope:county.culture = culture:anglo_saxon
-#						scope:county.culture = culture:norman
-#					}
-#				}
-#				NAND = {
-#					# German rulers want to convert the polabians
-#					scope:councillor_liege.culture = { has_cultural_pillar = heritage_central_germanic }
-#					scope:county.culture = culture:polabian
-#					NOT = { scope:councillor_liege.primary_title = title:e_hre }
-#				}
-#				NAND = {
-#					# Japanese rulers should convert Emishi counties
-#					scope:councillor_liege.culture = culture:japanese
-#					scope:county.culture = culture:emishi
-#				}
+				NAND = {
+					# Scottish rulers should convert counties of 'old' cultures to the new one.
+					scope:councillor_liege.culture = culture:scottish
+					OR = {
+						scope:county.culture = culture:anglo_saxon
+						scope:county.culture = culture:gaelic
+						scope:county.culture = culture:cumbrian
+						scope:county.culture = culture:pictish
+					}
+				}
+				NAND = {
+					# English rulers should convert counties of 'old' cultures to the new one.
+					scope:councillor_liege.culture = culture:english
+					OR = {
+						scope:county.culture = culture:anglo_saxon
+						scope:county.culture = culture:norman
+					}
+				}
+				NAND = {
+					# German rulers want to convert the polabians
+					scope:councillor_liege.culture = { has_cultural_pillar = heritage_central_germanic }
+					scope:county.culture = culture:polabian
+					NOT = { scope:councillor_liege.primary_title = title:e_hre }
+				}
+				NAND = {
+					# Japanese rulers should convert Emishi counties
+					scope:councillor_liege.culture = culture:japanese
+					scope:county.culture = culture:emishi
+				}
 				OR = {
 					scope:councillor_liege = {
 						has_character_flag = vassal_directive_improve_cultural_acceptance
@@ -1871,7 +2205,7 @@ task_accept_culture = {
 		if = {
 			# Prefer this over Collecting Taxes if you have some money
 			limit = {
-				scope:councillor_liege.gold >= steward_increase_development_value
+				scope:councillor_liege.gold >= steward_increase_prosperity_value
 			}
 			add = 1
 		}
@@ -1992,6 +2326,18 @@ task_convince_dejure = {
 	ai_county_target = neighbor_land
 	task_progress = task_progress_percentage
 
+	is_shown = {
+		has_dlc_feature = royal_court
+		scope:councillor_liege = {
+			trigger_if = {
+				limit = {
+					government_has_flag = government_is_republic
+				}
+				is_landed = yes
+			}
+		}
+	}
+
 	asset = {
 		icon = "gfx/interface/icons/council_task_types/task_convince_dejure.dds"
 		background = "gfx/interface/buttons/button_round_bg.dds"
@@ -2022,10 +2368,6 @@ task_convince_dejure = {
 				desc = task_convince_dejure_diplomatic_blunder
 			}
 		}
-	}
-
-	is_shown = {
-		has_dlc_feature = royal_court
 	}
 
 	progress = {
