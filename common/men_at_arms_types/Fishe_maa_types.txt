@@ -43,12 +43,7 @@ NEOW_militia = {
 		camel_cavalry = 1
 	}
 	can_recruit = {
-			militia_raise_limit_existing_militia_units < militia_raise_limit_existing_militia_buildings
 	}
-	should_show_when_unavailable = {
-		government_allows = noble_families
-	}
-
 	buy_cost = { gold = militia_recruitment_cost }
 	low_maintenance_cost = { gold = militia_low_maint_cost }
 	high_maintenance_cost = { gold = militia_high_maint_cost }
@@ -87,10 +82,6 @@ NEOW_militia_archers = {
 		archer_cavalry = 0.5
 	}
 	can_recruit = {
-			militia_raise_limit_existing_militia_units < militia_raise_limit_existing_militia_buildings
-	}
-	should_show_when_unavailable = {
-		government_allows = noble_families
 	}
 
 	buy_cost = { gold = militia_recruitment_cost }
@@ -132,10 +123,6 @@ NEOW_militia_skirmisher = {
 		peasant_militia = 1.5
 	}
 	can_recruit = {
-			militia_raise_limit_existing_militia_units < militia_raise_limit_existing_militia_buildings
-	}
-	should_show_when_unavailable = {
-		government_allows = noble_families
 	}
 
 	buy_cost = { gold = militia_recruitment_cost }
