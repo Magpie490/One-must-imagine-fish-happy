@@ -1856,6 +1856,34 @@ c_montpellier = {
 	#1213 forward
 }
 
+c_nimes = {
+	1178.1.1 = { change_prosperity_level = 23 }
+
+	865.1.1 = {
+		holder = 168137 #Bernat
+	}
+	985.1.1 = {
+		holder = 138285 #Guilhèm
+	}
+	1025.1.1 = {
+		holder = 138286 #Guilhèm
+	}
+	1050.1.1 = {
+		liege = d_toulouse
+		holder = 40204 #Raimon-Bernat
+	}
+	1074.1.1 = {
+		holder = 7663 #Bernat Aton
+	}
+	1129.1.1 = {
+		holder = trencavel_bernat_aton_5 #Bernat Aton
+		government = feudal_government
+	}
+	1159.8.2 = {
+		holder = trencavel_bernat_aton_6 #Bernat Aton
+	}
+}
+
 c_carcassonne = {
 	867.1.1 = { change_prosperity_level = 6 }
 	1066.1.1 = { change_prosperity_level = 10 }

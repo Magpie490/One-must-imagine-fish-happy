@@ -475,6 +475,9 @@ c_cagliari = {
 	807.1.1 = {
 		holder = 184008 # Nicholas
 	}
+	843.1.1 = {
+		liege = 0
+	}
 	864.1.1 = {
 		holder = 235092 # Gobleno
 	}
@@ -577,8 +580,8 @@ c_cagliari = {
 
 c_arborea = {
 	533.1.1 = {
-		liege = "e_byzantium"
 		government = administrative_government
+		liege = "d_sardinia"
 	}
 	687.1.1 = {
 		holder = 75006 # Torchitorio
@@ -983,8 +986,8 @@ c_logudoro = {
 
 c_tortoli = {
 	533.1.1 = {
-		liege = "e_byzantium"
 		government = administrative_government
+		liege = "d_sardinia"
 	}
 	687.1.1 = {
 		holder = 75006 # Torchitorio
