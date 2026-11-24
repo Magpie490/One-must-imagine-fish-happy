@@ -18,6 +18,7 @@
 		tradition_zealous_people
 		tradition_hussar
 		tradition_roman_legacy
+		tradition_xenophilic
 	}
 	
 	dlc_tradition = {

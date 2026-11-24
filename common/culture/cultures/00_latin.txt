@@ -16,12 +16,22 @@
 		tradition_poetry
 		tradition_roman_legacy
 	}
+
+	dlc_tradition = {
+		trait = tradition_contado
+		requires_dlc_flag = silk_and_silver
+	}
+
+	dlc_tradition = {
+		trait = tradition_civic_religion
+		requires_dlc_flag = silk_and_silver
+	}
 	
 	name_list = name_list_italian
 	
 	coa_gfx = { latin_group_coa_gfx western_coa_gfx }
 	building_gfx = { mediterranean_building_gfx }
-	clothing_gfx = { western_clothing_gfx }
+	clothing_gfx = { italian_clothing_gfx western_clothing_gfx }
 	unit_gfx = { western_unit_gfx }
 	house_coa_frame = house_frame_22
 	house_coa_mask_offset = { 0.0 0.11 }
@@ -48,13 +58,19 @@ roman = {
 		tradition_hereditary_hierarchy
 		tradition_noble_adoption
 	}
+
+	dlc_tradition = {
+		trait = tradition_roman_law
+		requires_dlc_flag = silk_and_silver
+	}
+
 	
 	name_list = name_list_roman
 
 	coa_gfx = { latin_group_coa_gfx western_coa_gfx } 
 	building_gfx = { mediterranean_building_gfx } 
 	clothing_gfx = { byzantine_clothing_gfx } 
-	clothing_gfx = { western_clothing_gfx } 
+	clothing_gfx = { italian_clothing_gfx western_clothing_gfx } 
 	unit_gfx = { eastern_unit_gfx } 	
 	house_coa_frame = house_frame_22
 	house_coa_mask_offset = { 0.0 0.11 }
@@ -83,12 +99,27 @@ cisalpine = {
 		tradition_maritime_mercantilism
 		tradition_roman_legacy
 	}
+
+	dlc_tradition = {
+		trait = tradition_roman_law
+		requires_dlc_flag = silk_and_silver
+	}
+
+	dlc_tradition = {
+		trait = tradition_civic_religion
+		requires_dlc_flag = silk_and_silver
+	}
+
+	dlc_tradition = {
+		trait = tradition_fortune_seekers
+		requires_dlc_flag = silk_and_silver
+	}
 	
 	name_list = name_list_cisalpine
 	
 	coa_gfx = { latin_group_coa_gfx western_coa_gfx }
 	building_gfx = { mediterranean_building_gfx }
-	clothing_gfx = { western_clothing_gfx }
+	clothing_gfx = { italian_clothing_gfx western_clothing_gfx }
 	unit_gfx = { western_unit_gfx }
 	house_coa_frame = house_frame_22
 	house_coa_mask_offset = { 0.0 0.11 }
@@ -113,6 +144,7 @@ sardinian = {
 	head_determination = head_determination_domain
 	traditions = {
 		tradition_stalwart_defenders
+		tradition_isolationist
 		tradition_ancient_miners
 		tradition_hill_dwellers
 		tradition_roman_legacy
@@ -132,7 +164,7 @@ sardinian = {
 	
 	coa_gfx = { latin_group_coa_gfx western_coa_gfx }
 	building_gfx = { mediterranean_building_gfx }
-	clothing_gfx = { western_clothing_gfx }
+	clothing_gfx = { italian_clothing_gfx western_clothing_gfx }
 	unit_gfx = { western_unit_gfx }
 	house_coa_frame = house_frame_22
 	house_coa_mask_offset = { 0.0 0.11 }
@@ -248,7 +280,7 @@ lombard = { #Italo-Lombards
 	
 	coa_gfx = { latin_group_coa_gfx western_coa_gfx }
 	building_gfx = { mediterranean_building_gfx }
-	clothing_gfx = { western_clothing_gfx }
+	clothing_gfx = { italian_clothing_gfx western_clothing_gfx }
 	unit_gfx = { western_unit_gfx }
 	house_coa_frame = house_frame_22
 	house_coa_mask_offset = { 0.0 0.11 }
@@ -283,7 +315,7 @@ langobard = { #Germanic Ancestor culture
 	
 	coa_gfx = { latin_group_coa_gfx western_coa_gfx }
 	building_gfx = { mediterranean_building_gfx }
-	clothing_gfx = { western_clothing_gfx }
+	clothing_gfx = { italian_clothing_gfx western_clothing_gfx }
 	unit_gfx = { western_unit_gfx }
 	house_coa_frame = house_frame_22
 	house_coa_mask_offset = { 0.0 0.11 }
