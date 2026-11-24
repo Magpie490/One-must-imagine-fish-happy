@@ -13,12 +13,12 @@
 @skirmisher_low_maint_cost = 0.2
 @skirmisher_high_maint_cost = @[skirmisher_low_maint_cost * high_maint_mult]
 
-@chemical_weapons_recruitment_cost = 100
-@chemical_weapons_low_maint_cost = 0.4
+@chemical_weapons_recruitment_cost = 75
+@chemical_weapons_low_maint_cost = 0.3
 @chemical_weapons_high_maint_cost = @[chemical_weapons_low_maint_cost * high_maint_mult]
 
-@militia_recruitment_cost = 40
-@militia_low_maint_cost = 0.15
+@militia_recruitment_cost = 10
+@militia_low_maint_cost = 0.1
 @militia_high_maint_cost = @[militia_low_maint_cost * high_maint_mult]
 
 @archers_recruitment_cost = 20
@@ -33,8 +33,8 @@
 @heavy_infantry_low_maint_cost = 0.6
 @heavy_infantry_high_maint_cost = @[heavy_infantry_low_maint_cost * high_maint_mult]
 
-@super_heavy_infantry_recruitment_cost = 200
-@super_heavy_infantry_low_maint_cost = 0.8
+@super_heavy_infantry_recruitment_cost = 100
+@super_heavy_infantry_low_maint_cost = 0.7
 @super_heavy_infantry_high_maint_cost = @[super_heavy_infantry_low_maint_cost * high_maint_mult]
 
 @light_cavalry_recruitment_cost = 30
