@@ -59,6 +59,7 @@ is_grant_government_shown = {
 				OR = {
 					this = government_type:feudal_government
 					this = government_type:tribal_government
+					this = government_type:republic_government
 				}
 			}
 		}
@@ -70,9 +71,7 @@ is_grant_government_shown = {
 				OR = {
 					government_has_flag = government_is_administrative
 					government_has_flag = government_is_theocracy
-				}
-				NOT = { 
-					faith.religion = religion:islam_religion
+					government_has_flag = government_is_republic
 				}
 			}
 		}
@@ -91,6 +90,7 @@ is_grant_government_shown = {
 				OR = {
 					government_has_flag = government_is_administrative
 					government_has_flag = government_is_theocracy
+					government_has_flag = government_is_republic
 				}
 				faith.religion = religion:islam_religion
 			}
